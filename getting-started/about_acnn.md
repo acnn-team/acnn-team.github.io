@@ -9,9 +9,9 @@ sidebar:
 permalink: /
 ---
 
-ACNN is a machine learning potential approach for atomic simulations. Its original purpose was to
-serve as part of artificial intelligence module for the _ab initio_ Real-space Electronic Structure (ARES), 
-however it can be relatively straightforward to be used independently. 
+Attention Coupled Neural Network(ACNN) is a machine learning potential(MLP) approach for atomic simulations.
+The original purpose was to serve as part of artificial intelligence module for the _ab initio_ Real-space Electronic Structure (ARES) code. 
+However it can be relatively straightforward to be used independently. 
 
 [//]: # (The main design concept is to couple a multi-head self-attention)
 
@@ -23,7 +23,7 @@ however it can be relatively straightforward to be used independently.
 
 [//]: # (attention mechanisms, based on their specific accuracy requirements.)
 
-ACNN is primarily written in C++ and based on libtorch (C++ Distributions of PyTorch).
+ACNN is primarily written in C++ and based on LibTorch (C++ Distributions of PyTorch).
 Some practical utilities are placed in `scripts/`,
 the external program interfaces are placed in `interface/`.
 
