@@ -8,7 +8,7 @@ sidebar:
   nav: "docs"
 ---
 
-ACNN has passed tested on the x86_64 Linux platform.
+ACNN has been successfully tested on the x86_64 Linux platform.
 
 ### Dependencies
 - Libtorch (Pre-cxx11 ABI for broader platform support)
@@ -48,16 +48,25 @@ set(pybind11_DIR /path/to/pybind11)             # optional  for python interface
 Execute the following compound command to perform a default installation:
 
 ```console
-$ mkdir build && cd build && cmake .. && make
+$ cmake -b build
+$ cmake --build build --target acnn
 ```
 
-The executables will be placed in `torchdemo/build`, which you could add to your path. To verify that the installation ran as expected, run the following command:
+The executables will be located in `torchdemo/build`. 
+You may want to add this directory to your `$PATH`. 
+
+```console
+export PATH=$(pwd)/build:$PATH
+export PATH=$(pwd)/interface/airss:$PATH
+```
+
+To confirm that the installation was successful, execute the following command:
 
 ```console
 $ acnn
 ```
 
-The output menu will tell you how to use acnn for simulations. It will also attempt to create an input control file.
+The output menu will tell you how to use acnn for simulations. Also attempt to create an input control file.
 
 > **Note:** It is strongly recommended that `g++` version 9 and above are used to build the AIRSS
 utilities. Other compiler families (such as `ifort`) are not supported.
