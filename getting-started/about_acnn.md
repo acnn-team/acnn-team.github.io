@@ -6,7 +6,7 @@ lang: en
 lang-ref: about-notes
 sidebar:
   nav: "docs"
-#permalink: /
+permalink: /
 ---
 
 ACNN is a machine learning potential approach for atomic simulations. The original purpose was to
