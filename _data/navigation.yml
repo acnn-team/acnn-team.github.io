@@ -17,7 +17,7 @@ en:
     - title: External
       children:
         - title: External
-          url: /technical-reference/utilities/
+          url: /external/external-utilities/
     - title: Technical Reference
       children:
         - title: Utilities
