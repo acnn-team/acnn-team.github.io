@@ -8,39 +8,19 @@ sidebar:
   nav: "docs"
 ---
 
-This page walks through a series of examples that demonstrate the versatility of the AIRSS package in crystal structure prediction. Chapter 1 introduces the user to the `buildcell` tool, a core component of the AIRSS package that is used to generate input structures. These examples use a fast pair potential code to calculate energies rather than passing the input to a fully-fledged DFT package such as CASTEP. Chapter 2 introduces the use of the CASTEP package to perform more accurate calculations. Chapter 3 demonstrates how empirical force fields can be used for structure prediction, focusing on the use of Julian Gale’s powerful GULP code. Finally, Chapter 4 gives examples of how to integrate AIRSS with other DFT packages such as VASP.
+This page walks through a series of examples that demonstrate the versatility of the ACNN package. Chapter 1 introduces the user to train and evaluate an ACNN model, which is the core component of the ACNN package. Chapter 2 introduces the use of the ACNN model to perform atomic simulations with extern software.
+
 
 ## Table of Contents
 
-- [**1.01**](#example-101): Lennard–Jones solid with 8 atoms
+- [**1.01**](#example-11): Training for boron cluster.
 - [**1.02**](#example-102): Lennard–Jones cluster with 13 atoms
-- [**1.03**](#example-103): Lennard–Jones cluster with 2–13 atoms
-- [**1.04**](#example-104): Lennard–Jones cluster with 38 atoms and symmetry
-- [**1.05**](#example-105): Lennard–Jones cluster with 38 atoms and relax-and-shake (RASH)
-- [**1.06**](#example-106): Lennard–Jones cluster LJ56, using LJ55 icosahedral core
-- [**1.07**](#example-107): Lennard–Jones surface with adatom
-- [**1.08**](#example-108): Lennard–Jones binary with fixed composition
-- [**1.09**](#example-109): Lennard–Jones binary with variable composition
-- [**1.10**](#example-110): Lennard–Jones ternary with variable composition
-- [**1.11**](#example-111): Lennard–Jones binary defect calculation
-- [**1.12**](#example-112): Lennard–Jones binary nanowire in a nanotube
-- [**1.13**](#example-113): Lennard–Jones binary interface
-- [**2.01**](#example-201): CASTEP free search for 2 atoms of carbon at 100 GPa
-- [**2.02**](#example-202): CASTEP free search for 8 atoms of hydrogen at 100 GPa, followed by molecular units
-- [**2.03**](#example-203): CASTEP fixed cell search for γ-B28
-- [**2.04**](#example-204): CASTEP fixed cell search for γ-B28 with units
-- [**3.01**](#example-301): GULP free search for 2 atoms of carbon at 100 GPa, using a Tersoff potential
-- [**3.02**](#example-302): GULP coordination constrained search, 8 atoms of carbon, using a Tersoff potential
-- [**3.03**](#example-303): GULP coordination constrained cluster search, 20 atoms of carbon, using a Tersoff potential
-- [**3.04**](#example-304): GULP symmetry unconstrained search for SiO₂ polymorphs, using a Vashishta potential
-- [**3.05**](#example-305): GULP symmetry unconstrained search for layered SiO₂ structures, using a Vashishta potential
-- [**3.06**](#example-306): GULP symmetry unconstrained search for small SiO₂ clusters, using a Vashishta potential
-- [**3.07**](#example-307): GULP symmetry constrained search for CH₄ molecular crystals, using a Tersoff potential
-- [**4.01**](#example-401): VASP free search for 2 atoms of carbon at 100 GPa
 
-## Example 1.01
 
-In this example we will use random searching to find the ground state of a Lennard–Jones solid.
+
+## Example 1.1
+
+In this example, we will train an ACNN model for a unary system born cluster.
 
 ```console
 $ ls
