@@ -1,5 +1,5 @@
 ---
-title: "Ternary Structures Search with AIRSS"
+title: "Binary Structures Search with ACNN"
 layout: single
 classes: wide
 lang: en
