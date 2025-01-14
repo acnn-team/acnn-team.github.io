@@ -14,6 +14,10 @@ en:
           url: /getting-started/contributor/
 #        - title: AIRSS in Binder
 #          url: /getting-started/airss-in-binder/
+    - title: External
+      children:
+        - title: External
+          url: /technical-reference/utilities/
     - title: Technical Reference
       children:
         - title: Utilities
