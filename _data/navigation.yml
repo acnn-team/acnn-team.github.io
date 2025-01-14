@@ -8,8 +8,6 @@ en:
           url: /
         - title: Installation
           url: /getting-started/installation/
-        - title: Graph
-          url: /getting-started/build_graph/
         - title: Contributor
           url: /getting-started/contributor/
 #        - title: AIRSS in Binder

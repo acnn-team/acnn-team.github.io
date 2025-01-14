@@ -48,7 +48,7 @@ set(pybind11_DIR /path/to/pybind11)             # optional  for python interface
 Execute the following compound command to perform a default installation:
 
 ```console
-$ cmake -b build
+$ cmake -B build
 $ cmake --build build --target acnn
 ```
 
