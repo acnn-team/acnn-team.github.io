@@ -8,7 +8,7 @@ sidebar:
   nav: "docs"
 ---
 
-ACNN can be interfaced with a number of external packages and software to perform specific tasks related to simulation and analysis. This page provides an overview of these interfaces.
+ACNN can be interfaced with a number of external packages and software to perform specific tasks related to simulation and analysis. This page provides an overview of dependency relationship.
 
 OVERVIEW
 --------
