@@ -45,29 +45,29 @@ en:
 #        - title: Download AIRSS v0.9.1
 #          url: http://bit.ly/2KtvEWU
           
-zh:
-  main:
-
-  docs:
-    - title: 入门简介
-      children:
-        - title: 关于AIRSS
-          url: /zh/   
-        - title: 安装方法
-          url: /zh/installation/
-        - title: 样例
-          url: /zh/examples/
-    - title: 技术细节
-      children:
-        - title: AIRSS模块
-          url: /zh/airss-utilities/
-        - title: 外部模块
-          url: /zh/external-utilities/
-        - title: Buildcell使用手册
-          url: /zh/buildcell-manual/
-    - title: 链接
-      children:
-        - title: "Materials Theory Group"
-          url: https://www.mtg.msm.cam.ac.uk/
-        - title: 下载AIRSS v0.9.1
-          url: http://bit.ly/2KtvEWU
+#zh:
+#  main:
+#
+#  docs:
+#    - title: 入门简介
+#      children:
+#        - title: 关于AIRSS
+#          url: /zh/
+#        - title: 安装方法
+#          url: /zh/installation/
+#        - title: 样例
+#          url: /zh/examples/
+#    - title: 技术细节
+#      children:
+#        - title: AIRSS模块
+#          url: /zh/airss-utilities/
+#        - title: 外部模块
+#          url: /zh/external-utilities/
+#        - title: Buildcell使用手册
+#          url: /zh/buildcell-manual/
+#    - title: 链接
+#      children:
+#        - title: "Materials Theory Group"
+#          url: https://www.mtg.msm.cam.ac.uk/
+#        - title: 下载AIRSS v0.9.1
+#          url: http://bit.ly/2KtvEWU
