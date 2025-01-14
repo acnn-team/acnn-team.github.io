@@ -8,8 +8,8 @@ sidebar:
   nav: "docs"
 ---
 
-Sincerely thank everyone who contributed to the development and success of this software
----
+## _Sincerely thank everyone who contributed to the development and success of this software_
+
 
 **_Jiaxiang Li_**
 
