@@ -5,7 +5,7 @@ en:
     - title: Getting Started
       children:
         - title: About ACNN
-          url: /getting-started/about_acnn/
+          url: /
         - title: Installation
           url: /getting-started/installation/
         - title: Graph
