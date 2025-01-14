@@ -19,8 +19,6 @@ sidebar:
 
 **_Qiang Wang_**
 
-**_Zefang Wang_**
-
 
 
 [//]: # (Materials Theory Group member and PhD student [Bonan Zhu]&#40;https://www.mtg.msm.cam.ac.uk/People/zhu&#41; has created an interactive online environment for the ab initio random structure searching &#40;AIRSS&#41; code. The environment uses [Binder]&#40;https://mybinder.org/&#41; and allows a user to access and run selected examples from the AIRSS code in-browser.)
