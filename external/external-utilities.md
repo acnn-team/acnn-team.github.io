@@ -17,6 +17,13 @@ High-performance phase diagram solver.
 
 http://www.qhull.org/
 
+CALYPSO
+-------
+
+CALYPSO is a simple and powerful method for structure prediction.
+
+http://calypso.cn
+
 AIRSS
 -----
 
