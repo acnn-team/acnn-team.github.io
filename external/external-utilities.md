@@ -61,10 +61,8 @@ This program is designed for large-scale batch structural optimization, employin
 ```console
 $ cd torchdemo/interface/bfgs
 $ cmake -B build
-$ cmake --build build --target relax
+$ cmake --build build --target acnn_relax
 ```
-
-
 
 
 LAMMPS
