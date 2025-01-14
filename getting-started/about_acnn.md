@@ -9,27 +9,29 @@ sidebar:
 permalink: /
 ---
 
-ACNN is a machine learning potential approach for atomic simulations. The original purpose was to
-serve as the machine learning module for the real-space finite-difference based
-large-scale KS-DFT simulation software (ARES), but it can be relatively straightforward to be used
-independently. 
+ACNN is a machine learning potential approach for atomic simulations. Its original purpose was to
+serve as part of artificial intelligence module for the ab initio Real-space Electronic Structure (ARES), 
+however it can be relatively straightforward to be used independently. 
 
-Its main design concept is to couple a multi-head self-attention
-mechanism with traditional short-range machine learning potentials to improve
-the accuracy of machine learning potentials, allows users to train machine
-learning potential models with different levels of accuracy, including or excluding
-attention mechanisms, based on their specific accuracy requirements.
+[//]: # (The main design concept is to couple a multi-head self-attention)
 
-ACNN is primarily written in C++ and based on libtorch (C++ Distributions of PyTorch). 
-Some practical utilities are placed in `scripts/`, 
-and external program interfaces are placed in `interface/`.
+[//]: # (mechanism with traditional short-range machine learning potentials to improve)
+
+[//]: # (the accuracy of machine learning potentials, allows users to train machine)
+
+[//]: # (learning potential models with different levels of accuracy, including or excluding)
+
+[//]: # (attention mechanisms, based on their specific accuracy requirements.)
+
+ACNN is primarily written in C++ and based on libtorch (C++ Distributions of PyTorch).
+Some practical utilities are placed in `scripts/`,
+the external program interfaces are placed in `interface/`.
 
 Currently, ACNN can interface with:
-- ARES-PW/MD/Phono
+- ARES-PW/MD/Phonon
 - LAMMPS (Including LAMMPS based packages)
 - Python
 - CALYPSO
-- USPEX
 - AIRSS
 
 Licence and Citation
