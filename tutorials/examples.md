@@ -13,14 +13,14 @@ This page walks through a series of examples that demonstrate the versatility of
 
 ## Table of Contents
 
-- [**1.01**](#example-11): Training for boron cluster.
+- [**1.01**](#example-11): Training for Sr-B system.
 - [**1.02**](#example-102): Lennard–Jones cluster with 13 atoms
 
 
 
 ## Example 1.1
 
-In this example, we will train an ACNN model for a unary system born cluster.
+In this example, we will train an ACNN model for a binary system Sr-B cluster.
 
 ```console
 $ ls
