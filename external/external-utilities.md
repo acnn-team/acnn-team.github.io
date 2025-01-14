@@ -31,6 +31,12 @@ AIRSS is a simple and powerful method for structure prediction.
 
 https://www.mtg.msm.cam.ac.uk/Codes/AIRSS
 
+ARES
+----
+
+[ARES](https://8.219.233.107) is used as a DFT computational backend to generate datasets for the ACNN model.
+
+
 xmgrace
 -------
 

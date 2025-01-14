@@ -17,8 +17,6 @@ AIRSS
 -----
 
 
-
-
 We use [AIRSS](https://www.mtg.msm.cam.ac.uk/Codes/AIRSS) to generate 500,000 random structures.
 
 ```console
@@ -57,11 +55,6 @@ Number of compositions :    663
 
 It is evident that the extensive compositional space in the structure prediction of this system presents a significant challenge to a comprehensive exploration.
 
-
-ARES
-----
-
-[ARES](https://8.219.233.107) is used as a DFT computational backend to generate datasets for the ACNN model.
 
 ```console
 $ ls
