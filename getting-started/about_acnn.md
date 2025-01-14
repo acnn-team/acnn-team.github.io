@@ -1,5 +1,5 @@
 ---
-title: "About The Notes"
+title: "About ACNN"
 layout: single
 classes: wide
 lang: en

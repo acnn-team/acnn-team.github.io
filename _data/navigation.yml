@@ -5,11 +5,13 @@ en:
     - title: Getting Started
       children:
         - title: About ACNN
-          url: /    
+          url: /getting-started/about_acnn/
         - title: Installation
           url: /getting-started/installation/
-        - title: External
-          url: /getting-started/external_interface/
+        - title: Graph
+          url: /getting-started/build_graph/
+        - title: Contributor
+          url: /getting-started/contributor/
 #        - title: AIRSS in Binder
 #          url: /getting-started/airss-in-binder/
     - title: Tutorials
