@@ -61,6 +61,6 @@ LAMMPS stands for Large-scale Atomic/Molecular Massively Parallel Simulator. LAM
 
 http://lammps.sandia.gov/
 
-> **Note:** This package is not so recommend, for ACNN can be tightly integrated with ARES-MD.
+[//]: # (> **Note:** This package is not so recommend, for ACNN can be tightly integrated with ARES-MD.)
 
 

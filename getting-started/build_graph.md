@@ -67,7 +67,7 @@ $ cmake --build build --target relax
 
 
 
-LAMMPS (Recommend)
+LAMMPS
 ------------------
 
 LAMMPS stands for Large-scale Atomic/Molecular Massively Parallel Simulator. LAMMPS is a classical molecular dynamics simulation code focusing on materials modeling.
