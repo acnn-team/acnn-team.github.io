@@ -8,7 +8,7 @@ sidebar:
   nav: "docs"
 ---
 
-This page offers a ternary crystal structure search, complete with the associated scripts, to document the complex process and serve as an example for other similar tasks.
+This page offers a binary crystal structure search, complete with the associated scripts, to document the complex process and serve as an example for other similar tasks.
 
 AIRSS
 -----

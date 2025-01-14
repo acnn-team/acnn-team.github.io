@@ -18,8 +18,8 @@ en:
       children:
         - title: Examples
           url: /tutorials/examples/
-        - title: Ternary Structures Search with AIRSS
-          url: /tutorials/airss_ternary/
+        - title: Structures Search with ACNN
+          url: /tutorials/csp_binary/
    #- title: How-To Guides
    #  children:
    #    - title: How to set up high-pressure binary structure searches
@@ -36,8 +36,12 @@ en:
 #          url: /technical-reference/building-structures/
     - title: External Links
       children:
+        - title: Ma Group
+          url: http://mym.calypso.cn/mym.html
 #        - title: Materials Theory Group
 #          url: https://www.mtg.msm.cam.ac.uk/
+        - title: Download CALYPSO
+          url: http://calypso.cn
 #        - title: Download AIRSS v0.9.1
 #          url: http://bit.ly/2KtvEWU
           
