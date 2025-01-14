@@ -13,10 +13,80 @@ This page offers a binary crystal structure search, complete with the associated
 
 > Several related software and programs need to be precompiled, see `External` for more details
 
-Compile all the dependence you 
-----
-1 Deploy the project
---------------------
+
+Deploy the Pipeline
+-------------------
+
+We deploy a pipeline for concurrent learning on the binary Sr-B system at 40 GPa. Please refer to [here](https://arxiv.org/abs/2310.13945) for detailed information about the system.
+
+```console
+$ acnn_deploy -p 40 -s SrB -b Sr-Sr=2.075,Sr-B=1.671,B-B=1.267 -n amd9654
+
+$ ls
+auto  DFT  PD  POT  RELAX  RSS  SEED  XSF
+```
+
+Modify the Personalized File
+----------------------------
+Some files, such as pseudopotentials and input files for DFT calculations, need to be adjusted by the user according to meet their specific computational requirements.
+
+For users hooked on VASP, you need to check the following files.
+
+INCAR
+```console
+$ vi DFT/dyn_vasp_in
+
+    ...
+ 46 SEGMENT_IN+="""
+ 47 PREC         =   Normal
+ 48 ISTART       =   0
+ 49 ISPIN        =   1
+ 50 LREAL        =   False
+ 51 ENCUT        =   650
+ 52 KSPACING     =   0.25
+ 53 LWAVE        =   False
+ 54 LCHARG       =   False
+ 55 ADDGRID      =   False
+ 56 ISYM         =   0
+ 57 KPAR         =   4
+ 58 NCORE        =   4
+ 59 ISMEAR       =   0
+ 60 SIGMA        =   0.05
+ 61 NELM         =   200
+ 62 NELMIN       =   6
+ 63 EDIFF        =   1e-07
+ 64 SYMPREC      =   1e-05
+ 65 PSTRESS      =   2000
+ 66 """
+    ...
+```
+
+Slurm submits task script
+```console
+$ vi DFT/sub.sh
+
+    ...
+  9 source /public/env/compiler_oneapi2024 > /dev/null
+ 10 
+    ...
+ 20 
+ 21 cmd="mpirun -np $total_cores vasp_std"
+    ...
+```
+
+And POTCARS
+```console
+$ ls DFT/POTCAR*
+
+DFT/POTCAR-Sr  DFT/POTCAR-B
+```
+
+Generate Random Structures
+--------------------------
+To be precise, we do not restrict the sources of structure generation but strictly regulate the carrier files of the structures.
+
+
+
 
 
 
