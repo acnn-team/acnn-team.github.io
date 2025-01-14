@@ -10,6 +10,27 @@ sidebar:
 
 ACNN can be interfaced with a number of external packages and software to perform specific tasks related to simulation and analysis. This page provides an overview of these interfaces.
 
+OVERVIEW
+--------
+```console
+acnn
+├── OpenBLAS
+│   ├── Version: >= 0.3.0
+│   └── Used for: Accelerates matrix operations
+└── LibTorch
+    ├── Version: >= 1.13.0
+    ├── Prebuilt binaries
+    │   ├── CPU version
+    │   └── GPU version (optional)
+    └── Machine learning computations
+```
+
+
+
+
+
+
+
 LAMMPS
 ------
 
@@ -23,11 +44,3 @@ An automic script `build_lammps_interface.sh` is designed for download lammps an
 ```console
 cd torchdemo/interface/lammps && sh build_lammps_interface.sh build 8
 ```
-
-AIRSS
------
-
-Ab initio random structure searching (AIRSS) is a very simple, yet powerful and highly parallel, approach to structure prediction.
-
-ARES
-----
