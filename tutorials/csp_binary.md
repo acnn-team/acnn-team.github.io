@@ -11,7 +11,7 @@ sidebar:
 This page offers a binary crystal structure search, complete with the associated scripts, to document the complex process and serve as an example for other similar tasks.
 
 
-> **Several related software and programs need to be precompiled, and their executables should be added to the `$PATH`**
+> **Several related software and programs need to be precompiled, see `External` for more details**
 
 AIRSS
 -----
