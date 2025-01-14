@@ -13,26 +13,62 @@ ACNN can be interfaced with a number of external packages and software to perfor
 OVERVIEW
 --------
 ```console
-acnn
-├── OpenBLAS
-│   ├── Version: >= 0.3.0
-│   └── Used for: Accelerates matrix operations
-└── LibTorch
-    ├── Version: >= 1.13.0
-    ├── Prebuilt binaries
-    │   ├── CPU version
-    │   └── GPU version (optional)
-    └── Machine learning computations
+Project
+├── acnn
+│   ├── OpenBLAS
+│   │   ├── Version: >= 0.3.0
+│   │   └── Used for: Accelerates matrix operations
+│   ├── LibTorch
+│   │   ├── Version: >= 1.13.0
+│   │   ├── Prebuilt binaries
+│   │   │   ├── CPU version
+│   │   │   └── GPU version (optional)
+│   │   └── Used for: Machine learning computations
+│   └── Functionality: Neural network predictions
+│
+├── acnn_relax
+│   ├── OpenBLAS
+│   │   ├── Version: >= 0.3.0
+│   │   └── Used for: Accelerates matrix operations
+│   ├── LibTorch
+│   │   ├── Version: >= 1.13.0
+│   │   ├── Prebuilt binaries
+│   │   │   ├── CPU version
+│   │   │   └── GPU version (optional)
+│   │   └── Used for: Machine learning computations
+│   └── Functionality: Structure relaxation with neural networks
+│
+└── lmp_mpi
+    ├── OpenBLAS
+    │   ├── Version: >= 0.3.0
+    │   └── Used for: Accelerates matrix operations
+    ├── LibTorch
+    │   ├── Version: >= 1.13.0
+    │   ├── Prebuilt binaries
+    │   │   ├── CPU version
+    │   │   └── GPU version (optional)
+    │   └── Used for: Machine learning computations
+    ├── LAMMPS
+    │   ├── Version: lammps-2Aug2023
+    │   └── Used for: Molecular dynamics simulations
+    └── Functionality: Coupling molecular dynamics with machine learning
+```
+
+
+ACNN_RELAX (Recommend)
+----------------------
+
+This program is designed for large-scale batch structural optimization, employing the BFGS algorithm implemented in ARES.
+```console
+$ cd torchdemo/interface/bfgs
+$ cmake -B build
+$ cmake --build build --target relax
 ```
 
 
 
-
-
-
-
-LAMMPS
-------
+LAMMPS (Recommend)
+------------------
 
 LAMMPS stands for Large-scale Atomic/Molecular Massively Parallel Simulator. LAMMPS is a classical molecular dynamics simulation code focusing on materials modeling.
 Please refer [here](https://www.lammps.org) for more information.
@@ -42,5 +78,6 @@ Please refer [here](https://www.lammps.org) for more information.
 An automic script `build_lammps_interface.sh` is designed for download lammps and build.
 
 ```console
-cd torchdemo/interface/lammps && sh build_lammps_interface.sh build 8
+$ cd torchdemo/interface/lammps
+$ sh build_lammps_interface.sh build 8
 ```
