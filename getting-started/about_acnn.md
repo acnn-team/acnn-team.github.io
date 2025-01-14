@@ -10,7 +10,7 @@ permalink: /
 ---
 
 ACNN is a machine learning potential approach for atomic simulations. Its original purpose was to
-serve as part of artificial intelligence module for the ab initio Real-space Electronic Structure (ARES), 
+serve as part of artificial intelligence module for the _ab initio_ Real-space Electronic Structure (ARES), 
 however it can be relatively straightforward to be used independently. 
 
 [//]: # (The main design concept is to couple a multi-head self-attention)
