@@ -10,7 +10,7 @@ sidebar:
 
 > **_Sincerely thank everyone who contributed to the development and success of this software_**
 
-**_Yu Xie_**
+**_[Yu Xie](xieyu@jlu.edu.cn)_**
 
 **_Hanyu Liu_**
 
