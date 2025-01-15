@@ -52,8 +52,8 @@ $ cmake -B build
 $ cmake --build build --target acnn
 ```
 
-The executables will be located in `torchdemo/build`. 
-You may want to add this directory to your `$PATH`. 
+The executables will be located in `torchdemo/build`.
+You may consider adding the directory of the executable programs to your `$PATH`. 
 
 ```console
 export PATH=$(pwd)/build:$PATH
@@ -66,10 +66,8 @@ To confirm that the installation was successful, execute the following command:
 $ acnn
 ```
 
-The output menu will tell you how to use acnn for simulations. Also attempt to create an input control file.
-
-> **Note:** It is strongly recommended that `g++` version 9 and above are used to build the AIRSS
-utilities. Other compiler families (such as `ifort`) are not supported.
+The output menu will provide instructions on how to use ACNN for simulations. Additionally, try creating an input control file.
+> **Note:** It is strongly recommended to use `g++` version 9 or higher to build ACNN and utilities. Other compiler families (such as `ifort`) are not supported.
 
 
 

@@ -47,4 +47,4 @@ VIRIAL
     xx  xy  xz  yx  yy  yz  zx  zy  zz           
 ```
 
-> The keyword VIRIAL is not commonly found in standard .xsf files. However, its unit being in electronvolts (eV) is helpful in reflecting the contribution of the PV term to the enthalpy in high-pressure systems.
+> **Note:** The keyword VIRIAL is not commonly found in standard .xsf files. However, its unit being in electronvolts (eV) is helpful in reflecting the contribution of the PV term to the enthalpy in high pressure systems.
