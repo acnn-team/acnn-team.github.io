@@ -83,66 +83,70 @@ DFT/POTCAR-Sr  DFT/POTCAR-B
 
 Generate Random Structures
 --------------------------
-To be precise, we do not restrict the sources of structure generation but strictly regulate the carrier files of the structures.
+To be precise, we do not restrict the sources of structure generation but only strictly regulate the carrier files of the structures.
 
-
-
-
-
-
-
-AIRSS
------
-
-
-We use [AIRSS](https://www.mtg.msm.cam.ac.uk/Codes/AIRSS) to generate 500,000 random structures.
+Generally, the prepared structures are placed in the `DFT/Base` directory.
 
 ```console
 $ ls
 
-SiSO.cell
-
-$ cat SiSO.cell
-
-#VARVOL=10
-#MAXTIME=0.1
-
-#### FORMULA ####
-#SPECIES=Si,S,O
-#NATOM=1-16
-#MINSEP=0.8 Si-Si=1.440 Si-S=1.260 Si-O=1.200 S-S=1.080 S-O=1.020 O-O=0.960
-
-#### SYMMETRY ####
-#NFORM=1
-#SYMMOPS=1-48
-##SYMMNO=2-230
-```
-
-`SiSO.cell` is the "seed" input file which describes how the random structures should be built (by `buildcell`). In this case, 1~16 atoms are placed randomly into a unit cell of random shape, and a volume within 5% of 10 Å³ per atom. If a larger number of atoms were requested, then the volume of the cell would be scaled appropriately.
-
-```console
-$ airss.pl -build -max 500000 -seed SiSO &
-
-$ ca -s
+SrB-2457776-286-1.res
+SrB-2457776-286-2.res
+SrB-2457776-286-3.res
+SrB-2457797-283-1.res
+SrB-2457797-283-2.res
+SrB-2457797-283-3.res
+    ...
+    
+$ ca -s 
 
 structure               P/GPa     V/A^3        H/eV  nfu formula      space group      #
-  ...
-Number of structures   :   5000
-Number of compositions :    663
+    ...
+Number of structures   :    642
+Number of compositions :    158
 ```
 
-It is evident that the extensive compositional space in the structure prediction of this system presents a significant challenge to a comprehensive exploration.
+In this case, 1~16 atoms are placed randomly into a unit cell of random shape, and a volume within 5% of 10 Å³ per atom. 
+If a larger number of atoms were requested, then the volume of the cell would be scaled appropriately.
 
+
+Make Seeds
+----------
+The seed here refers to the known structures in the current search system. Their purpose is limited to constructing phase diagrams, and their information will not be incorporated into any artificial intelligence process.
 
 ```console
-$ ls
-
-batch_ares  dyn_ares_in  mkdft  O_ONCV_PBE-1.0.upf  scf.sh  Si_ONCV_PBE-1.0.upf  S_ONCV_PBE-1.0.upf
-
-$ mkdft 0
-
-  ...
+$ acnn_outcar2seed OUTCAR SrB-end-Sr-1.res      # VASP OUTCAR to seed file
 ```
+
+
+Run the Pipeline
+----------------
+
+An effective approach is to run the program in the background using either nohup or tmux, depending on your preference.
+
+```console
+$ tmux new -s CaH
+
+$ ./auto > log 2>&1 &
+
+$ ctrl+b d
+
+$ tmux attach -t CaH
+```
+
+Or
+
+```console
+$ nohup ./auto > log 2>&1 &
+```
+
+
+
+
+
+[//]: # (`SiSO.cell` is the "seed" input file which describes how the random structures should be built &#40;by `buildcell`&#41;. In this case, 1~16 atoms are placed randomly into a unit cell of random shape, and a volume within 5% of 10 Å³ per atom. If a larger number of atoms were requested, then the volume of the cell would be scaled appropriately.)
+
+
 
 
 

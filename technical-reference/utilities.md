@@ -31,6 +31,11 @@ acnn_pdhtml
 
 Analyze a batch of .res files and generate HTML phase diagrams.
 
+acnn_outcar2seed
+----------------
+
+Make a seed structure from VASP-OUTCAR file.
+
 ca(AIRSS)
 --
 
