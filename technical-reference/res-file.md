@@ -9,7 +9,6 @@ sidebar:
 ---
 
 This section outlines the format and content of the .res files in SHLEX, which serve as the foundation for most of the file analysis utilities in ACNN.
-acnn_deploy
 
 An example of a .res file is shown below
 
