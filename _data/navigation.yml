@@ -20,6 +20,10 @@ en:
       children:
         - title: Utilities
           url: /technical-reference/utilities/
+        - title: Format res
+          url: /technical-reference/res-file/
+        - title: Format xsf
+          url: /technical-reference/xsf-file/
 #        - title: AIRSS Utilities
 #          url: /technical-reference/airss-utilities/
 #        - title: External Utilities
