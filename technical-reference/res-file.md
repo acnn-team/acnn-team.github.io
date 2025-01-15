@@ -52,7 +52,7 @@ In the first line (TITL), each item represents specific information:
 
 ```console
 TITL SrB-2286444-4824-10   0     115.382       0       0        0      12      (C2)       n - 1
-[K]       [labal]       [press] [volume]  [enthalpy] [spin] [modspin] [na]   [pearson]   [n frame]
+TITL <name> <pressure> <volume> <enthalpy> <spin> <modspin> <#ions> <(symmetry)> n - <#copies>
 ```
 
 Lines beginning with `RES` typically contain comments or annotations related to specific data points or results within the file. These lines often serve to provide additional information or clarification about the structure, calculations, or parameters in the .res file.
