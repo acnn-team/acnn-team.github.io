@@ -144,10 +144,3 @@ $ nohup ./auto > log 2>&1 &
 
 
 
-[//]: # (`SiSO.cell` is the "seed" input file which describes how the random structures should be built &#40;by `buildcell`&#41;. In this case, 1~16 atoms are placed randomly into a unit cell of random shape, and a volume within 5% of 10 Å³ per atom. If a larger number of atoms were requested, then the volume of the cell would be scaled appropriately.)
-
-
-
-
-
-
