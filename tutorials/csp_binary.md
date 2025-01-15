@@ -83,7 +83,7 @@ DFT/POTCAR-Sr  DFT/POTCAR-B
 
 Generate Random Structures
 --------------------------
-To be precise, we do not restrict the sources of structure generation but only strictly regulate the carrier files of the structures.
+To be precise, ACNN do not restrict the sources of structure generation but only strictly regulate the carrier files of the structures.
 
 Generally, the prepared structures are placed in the `DFT/Base` directory.
 
