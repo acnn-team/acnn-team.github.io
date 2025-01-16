@@ -131,7 +131,7 @@ $ ./auto > log 2>&1 &
 
 $ ctrl+b d
 
-$ tmux attach -t CaH
+$ tmux attach -t AB
 ```
 
 Or
