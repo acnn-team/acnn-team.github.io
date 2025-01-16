@@ -125,7 +125,7 @@ Run the Pipeline
 An effective approach is to run the program in the background using either nohup or tmux, depending on your preference.
 
 ```console
-$ tmux new -s CaH
+$ tmux new -s AB
 
 $ ./auto > log 2>&1 &
 
