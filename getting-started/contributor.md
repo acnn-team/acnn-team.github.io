@@ -20,7 +20,7 @@ sidebar:
 
 **_Xiangyu Zheng_**
 
-**_Qiang Wang_**
+**_Qian Wang_**
 
 
 
