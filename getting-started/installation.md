@@ -49,7 +49,7 @@ Execute the following compound command to perform a default installation:
 
 ```console
 $ cmake -B build
-$ cmake --build build --target acnn_relax
+$ cmake --build build --target acnn
 ```
 
 The executables will be located in `torchdemo/build`.
