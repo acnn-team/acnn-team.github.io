@@ -1,5 +1,5 @@
 ---
-title: "SHELX res"
+title: "XCrySDen xsf"
 layout: single
 classes: wide
 lang: en
@@ -8,7 +8,7 @@ sidebar:
   nav: "docs"
 ---
 
-This section outlines the format and content of the .xsf files in SHLEX, which serve as the metadata of the dataset.
+This section outlines the format and content of the .xsf files, which serve as the metadata of the dataset.
 
 An example of a .xsf file is shown below
 
