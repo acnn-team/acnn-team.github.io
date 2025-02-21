@@ -36,6 +36,11 @@ acnn_outcar2seed
 
 Make a seed structure from VASP-OUTCAR file.
 
+acnn_estvol
+-----------
+
+Estimate single-atom systems using a series of compounds, with least squares method.
+
 ca(AIRSS)
 --
 
