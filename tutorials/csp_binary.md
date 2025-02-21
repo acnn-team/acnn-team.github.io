@@ -140,7 +140,7 @@ Or
 $ nohup ./auto > log 2>&1 &
 ```
 
-
+> ACNN has been tested across multiple systems and demonstrates high efficiency, reliability, and success rate (except for those who don't know how to use it).
 
 
 
