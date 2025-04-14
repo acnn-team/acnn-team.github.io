@@ -12,7 +12,7 @@ sidebar:
 
 **_[Yu Xie](http://iccms.jlu.edu.cn/info/1036/1331.htm)_**
 
-**_Hanyu Liu_**
+**_[Hanyu Liu](https://teachers.jlu.edu.cn/hanyuliu/zh_CN/index.htm)_**
 
 **_Jiaxiang Li_**
 
