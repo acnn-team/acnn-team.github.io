@@ -20,7 +20,7 @@ Deploy the Pipeline
 We deploy a pipeline for concurrent learning on the binary A-B system at 40 GPa. Please refer to [here](https://arxiv.org/abs/2310.13945) for detailed information about the system.
 
 ```console
-$ acnn_deploy -p 40 -s AB -b A-A=2.075,A-B=1.671,B-B=1.267 -n amd9654
+$ acnn_deploy -p 40 -s AB -b A-A=2.075,A-B=1.671,B-B=1.267 -n amd9654 -e vasp
 
 $ ls
 auto  DFT  PD  POT  RELAX  RSS  SEED  XSF
@@ -141,6 +141,5 @@ $ nohup ./auto > log 2>&1 &
 ```
 
 > ACNN has been tested across multiple systems and demonstrates high efficiency, reliability, and success rate (except for those who don't know how to use it).
-
 
 
