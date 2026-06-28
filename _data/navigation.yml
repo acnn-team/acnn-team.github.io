@@ -26,10 +26,6 @@ en:
       children:
         - title: Examples
           url: /tutorials/examples/
-        - title: Structures Search with ACNN
-          url: /tutorials/csp_binary/
-    - title: How-To Guides
-      children:
         - title: High-pressure searches
           url: /how-to-guides/high-pressure-binary-searches/
 
