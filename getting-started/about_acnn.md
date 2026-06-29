@@ -42,7 +42,7 @@ All the notes are released under the [GPL 2.0 licence](https://www.gnu.org/licen
 References
 ----------
 
-1. Jiaxiang Li _et al._, "Self-optimizing machine learning potential assisted automated workflow for highly efficient complex systems material design", _npj Computational Materials_ **12**, 101 (2026). [https://www.nature.com/articles/s41524-026-01971-9](https://www.nature.com/articles/s41524-026-01971-9)
+1. Jiaxiang Li _et al._, _npj Computational Materials_ **12**, 101 (2026). [[Link](https://www.nature.com/articles/s41524-026-01971-9)]
 
 [//]: # (&#40;1&#41; C.J. Pickard and R.J. Needs, Phys. Rev. Lett., **97**, 045504 &#40;2006&#41; [[Link][1]]  )
 

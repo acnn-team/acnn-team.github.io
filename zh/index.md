@@ -31,4 +31,4 @@ ACNN 主要使用 C++ 编写，并基于 LibTorch（PyTorch 的 C++ 发行版）
 参考文献
 --------------------
 
-1. Jiaxiang Li _et al._, "Self-optimizing machine learning potential assisted automated workflow for highly efficient complex systems material design", _npj Computational Materials_ **12**, 101 (2026). [https://www.nature.com/articles/s41524-026-01971-9](https://www.nature.com/articles/s41524-026-01971-9)
+1. Jiaxiang Li _et al._, _npj Computational Materials_ **12**, 101 (2026). [[Link](https://www.nature.com/articles/s41524-026-01971-9)]
