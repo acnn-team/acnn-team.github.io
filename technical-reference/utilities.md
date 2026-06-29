@@ -1,252 +1,130 @@
 ---
-title: "All Utilities"
+title: "Utilities"
 layout: single
 classes: wide
 lang: en
-lang-ref: Internal-utilities
+lang-ref: utilities
 sidebar:
   nav: "docs"
 ---
 
-This page provides details of various UNIX-style utilities, greatly facilitating data preprocessing and analysis.
-Some of them are from external sources, with their origins noted in parentheses. We extend our gratitude to all the developers of these utilities.
+ACNN provides small command-line utilities for deployment, data conversion, dataset checking, phase-diagram analysis, and structure-format conversion. This page lists the utilities most commonly used in the active-learning structure-search workflow.
 
-acnn_deploy
------------
+## ACNN workflow utilities
 
-Deploy the concurrent learning for structure prediction.
+### `acnn_deploy`
 
-acnn_bsafe
-----------
+Deploy a complete active-learning run directory.
 
-Check whether the bonding between atoms in the SHELX `.res` (results) structure file satisfies the given minimum bond length constraints.
+```console
+$ acnn_deploy -p 40 -s SrB -b Sr-Sr=2.075,Sr-B=1.671,B-B=1.267 -n amd9654 -e vasp
+```
 
-acnn_emodel
------------
+Required options:
 
-Test the potential error on a given dataset and generate plots.
+| Option | Meaning |
+| --- | --- |
+| `-p, --pressure` | Target pressure in GPa. |
+| `-s, --seed` | System tag used in filenames and job names. |
+| `-b, --minbonds` | Pairwise minimum bond distances. |
+| `-n, --partition` | Slurm partition or node group. |
+| `-e, --backend` | First-principles backend: `vasp` or `ares`. |
 
-acnn_pdhtml
------------
+`acnn_deploy` writes the selected pressure into the generated DFT, phase-diagram, and relaxation scripts.
 
-Analyze a batch of .res files and generate HTML phase diagrams.
+### `acnn_wait`
 
-acnn_outcar2seed
-----------------
+Wait for a group of Slurm jobs to finish. In the standard loop it is used after DFT labeling, ACNN training, and ACNN relaxation.
 
-Make a seed structure from VASP-OUTCAR file.
+```console
+$ acnn_wait FPSrB
+$ acnn_wait TRAINSrB
+$ acnn_wait RELAXSrB
+```
 
-acnn_estvol
------------
+### `acnn_outcar2seed`
 
-Estimate single-atom systems using a series of compounds, with least squares method.
+Convert a VASP `OUTCAR` into a DFT-relaxed seed structure.
 
-ca(AIRSS)
---
+```console
+$ acnn_outcar2seed OUTCAR SrB-end-Sr-1.res
+```
 
-A convenient bash wrapper for the `cryan` tool. Uses the same command line options as cryan.
+The output is a [`.res`](/technical-reference/res-file/) file suitable for `SEED/`.
 
-cabal(AIRSS)
------
+### `acnn_checkdt`
 
-A structure conversion tool. Usage:
+Check the converted ACNN training dataset after DFT-to-XSF conversion.
+
+```console
+$ acnn_checkdt 50
+```
+
+Run this after `XSF/ry` generates [`.xsf`](/technical-reference/xsf-file/) files for the current iteration.
+
+### `acnn_bsafe`
+
+Check whether a structure satisfies pairwise minimum bond-distance constraints.
+
+```console
+$ acnn_bsafe -b "Sr-Sr=2.075,Sr-B=1.671,B-B=1.267" -x 0.6
+```
+
+This is useful for filtering unsafe structures before submitting expensive DFT or relaxation jobs.
+
+### `acnn_pdhtml`
+
+Analyze a batch of `.res` structures and generate phase-diagram HTML output.
+
+```console
+$ acnn_pdhtml
+```
+
+The phase-diagram workflow normally calls this through the generated `PD/mkpd` script.
+
+### `acnn_ckrelax`
+
+Check ACNN relaxation output and report relaxation status. This is typically used inside the relaxation post-processing workflow.
+
+```console
+$ acnn_ckrelax -b "Sr-Sr=2.075,Sr-B=1.671,B-B=1.267" -x 0.6 -p 40 -c 192
+```
+
+### `acnn_limitjob`
+
+Limit or filter the structures selected from relaxation output before they are returned to the next DFT round.
+
+```console
+$ acnn_limitjob RELAXSrB 1000
+```
+
+## Structure conversion utilities
+
+### `cabal`
+
+`cabal` is an AIRSS utility included for structure-format conversion. It is commonly used to convert between `.res`, POSCAR, CIF, and other formats.
+
+```console
+$ cabal res poscar < input.res > POSCAR
+$ cabal poscar res < POSCAR > output.res
+```
+
+General usage:
 
 ```console
 $ cabal in out < seed.in > seed.out
-
-in==out : Niggli reduce
-supports castep+,cell,shx,res,gulp*,cif*,psi4*,xtl,xyz(e)
-*output only +input only
 ```
 
-The following converts a Castep cell file to a SHELX `.res` (results) file.
+### `ca`
 
-```console
-$ cabal cell res < input.cell > output.res
-```
+`ca` is a wrapper around AIRSS structure-analysis tools. It is useful for inspecting `.res` files, checking composition and symmetry, and preparing phase-diagram inputs.
 
-The following performs a Niggli reduction on a `.cell` file.
+### `symm`
 
-```console
-$ cabal cell cell < input.cell > output.cell
-```
-
-symm(AIRSS)
-----
-
-Finds the space group of the structure. For example, to find the symmetry of `test.res` you would type:
+Find the space group of a structure:
 
 ```console
 $ symm test
 ```
 
-
-
-
-
-
-<!--
-airss.pl
---------
-
-This Perl script performs ab initio random structure searching. See [AIRSS Examples](../examples) for instruction in its use. Random structures are repeatedly generated by `buildcell`, and relaxed with the chosen code (the default is Castep). Type `airss.pl -h` for a list of input arguments.
-
-buildcell
----------
-
-This Fortan code reads annotated Castep `.cell` files, and generates random "sensible" structures from them. The type of randomness introduced can be controlled through hash-tagged directives (which are treated as comments and ignored by Castep).
-
-ca
---
-
-A convenient bash wrapper for the `cryan` tool. Uses the same command line options as cryan.
-
-cabal
------
-
-A structure conversion tool. Usage:
-
-```console
-$ cabal in out < seed.in > seed.out
-
-in==out : Niggli reduce
-supports castep+,cell,shx,res,gulp*,cif*,psi4*,xtl,xyz(e)
-*output only +input only
-```
-
-The following converts a Castep cell file to a SHELX `.res` (results) file.
-
-```console
-$ cabal cell res < input.cell > output.res
-```
-
-The following performs a Niggli reduction on a `.cell` file.
-
-```console
-$ cabal cell cell < input.cell > output.cell
-```
-
-See also: `cif2res` in the [External Utilities](../external-utilities) page.
-
-conv
-----
-
-Converts all the SHELX `.res` files in the current directory to conventional cells. See also: `niggli` and `prim`.
-
-cryan
------
-
-A general purpose Fortran program to analyse large amounts of structure data. The structures are read from STDIN, for example:
-
-```console
-$ cat *.res | cryan -s
-$ gunzip -c lots.res.gz | cryan -f H2O -r
-$ find . -name "*.res" | xargs cat | cryan -m
-$ cat H2O-P21c.res | cryan -g
-```
-
-Experience suggests that cryan is suitable for the analysis of up to about 100,000 structures. Other techniques are required for larger data sets.
-
-castep_relax
-------------
-
-This bash script performs a self consistent geometry optimisation of the specified structure using Castep.
-
-crud.pl
--------
-
-The Castep run daemon. A Perl script for high-throughput batch calculations. The `.res` files for the structures to be relaxed are placed in the 'hopper' subdirectory (`/hopper`). The `seed.param` files are placed in the same directory that `crud.pl` is run from. Successful calculations are placed in `/good_castep`, and those that fail are placed into `/bad_castep`. The script can be run as a daemon (_i.e._ continues running once the hopper is empty, and waits for more).
-
-despawn
--------
-
-The `spawn` and `spawn-slow` scripts record the PIDs of the remotely spawned jobs. This script can be used to halt calculations in a controlled manner.
-
-gencell
--------
-
-This bash script will generate a set of recommended Castep `.cell` and `.param` files from a supplied unit cell volume, and atoms contained in the cell. It is strongly recommended that this is used as a starting point for most projects.
-
-gulp_relax
------------
-
-This bash script performs a geometry optimisation of the specified structure using GULP.
-
-lammps_relax
-------------
-
-This bash script performs a geometry optimisation of the specified structure using LAMMPS.
-
-> **Note:** This package is not currently recommended due to issues with structural optimisation.
-
-niggli
-------
-
-Performs a Niggli transformation on all the SHELX `.res` files in the current directory. See also: `conv` and `prim`.
-
-pp3_relax
-----------
-
-This bash script performs a geometry optimisation of the specified structure using `pp3`, a very simple pair potential code.
-
-psi4_relax
-------------
-
-This bash script performs a geometry optimisation of the specified structure using psi4.
-
-> **Note:** This package is not currently recommended due to issues with structural optimisation.
-
-vasp_relax
-----------
-
-This bash script performs a self consistent geometry optimisation of the specified structure using VASP.
-
-prim
-----
-
-Converts all the SHELX `.res` files in the current directory to primitive cells. See also: `conv` and `niggli`.
-
-run.pl
-------
-
-This Perl script runs a batch of Castep jobs in a directory. It is useful for "polishing" your results (_i.e._ re-running low energy structures at a higher calculation accuracy for publication), and high-throughput computation in general. Failed runs are placed into `/bad_castep`.
-
-spawn
------
-
-This script can be used to submit multiple jobs to the selection of machines listed in the `~/.spawn` file. For example:
-
-```
-node1 slots=8 root=
-node2 slots=8 root=
-node3 slots=12 root=
-```
-
-Typing `spawn airss.pl -seed Carbon` on your root node (on which it is not advisable to run large jobs) will start a total of 28 instances of airss.pl using the `Carbon.*` input files, on your 3 remote nodes. Spawn uses ssh to run the commands remotely. Password-free access to the resources in your `.spawn` file is convenient.
-
-The alternative to `spawn` or `mpirun` is to use the queueing system of a multiuser computer cluster to submit multiple jobs. This should be discussed with your system administrators.
-
-spawn-slow
-----------
-
-Similar to the spawn script, but uses delays to more slowly requests remote jobs. This is recommended when launching the `run.pl` and `crud.pl` scripts, which can potentially try to "grab" the same file if started all at once.
-
-stopairss
----------
-
-A script to kill spawned jobs. It will kill all jobs owned by you on the remote nodes—so use with care. Use `despawn` in preference.
-
-symm
-----
-
-Finds the space group of the structure. For example, to find the symmetry of `test.res` you would type:
-
-```console
-$ symm test
-```
-
-tidy.pl
--------
-
-Perl script that removes the output of uncompleted calculations within the current directory.
--->
+For a file named `test.res`, `symm test` reads the structure and reports the detected symmetry.

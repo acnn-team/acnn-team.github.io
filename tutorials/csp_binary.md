@@ -3,7 +3,7 @@ title: "Binary Structures Search with ACNN"
 layout: single
 classes: wide
 lang: en
-lang-ref: examples
+lang-ref: csp-binary
 sidebar:
   nav: "docs"
 ---
@@ -83,7 +83,7 @@ DFT/POTCAR-A  DFT/POTCAR-B
 
 Generate Random Structures
 --------------------------
-To be precise, ACNN do not restrict the sources of structure generation but only strictly regulate the carrier files of the structures.
+To be precise, ACNN does not restrict the sources of structure generation, but structure files should follow the [`.res` format](/technical-reference/res-file/).
 
 Generally, the prepared structures are placed in the `DFT/Base` directory.
 
@@ -112,7 +112,7 @@ If a larger number of atoms were requested, then the volume of the cell would be
 
 Make Seeds
 ----------
-The seed here refers to the known structures in the current search system. Their purpose is limited to constructing phase diagrams, and their information will not be incorporated into any artificial intelligence process.
+The seed here refers to the known structures in the current search system. Their purpose is limited to constructing phase diagrams, and their information will not be incorporated into any artificial intelligence process. Seed structures are stored as [`.res` files](/technical-reference/res-file/).
 
 ```console
 $ acnn_outcar2seed OUTCAR AB-end-A-1.res      # VASP OUTCAR to seed file
@@ -141,5 +141,3 @@ $ nohup ./auto > log 2>&1 &
 ```
 
 > ACNN has been tested across multiple systems and demonstrates high efficiency, reliability, and success rate (except for those who don't know how to use it).
-
-

@@ -8,7 +8,7 @@ sidebar:
   nav: "docs"
 ---
 
-This guide describes the current ACNN active-learning workflow for high-pressure crystal structure searches. The example scripts are written for the Sr-B system at 40 GPa, but the same workflow can be adapted to other binary or multi-component systems by changing the system tag, element list, pseudopotentials, bond limits, pressure, and scheduler settings.
+This guide describes the current ACNN active-learning workflow for high-pressure crystal structure searches. The example scripts are written for the Sr-B system at 40 GPa, but the same workflow can be adapted to other binary or multi-component systems by changing the system tag, element list, pseudopotentials, bond limits, deployment pressure, and scheduler settings.
 
 The workflow is an iterative loop:
 
@@ -31,9 +31,9 @@ Directory roles:
 | Directory | Purpose |
 | --- | --- |
 | `RSS/` | Generates random structures with AIRSS or CALYPSO. |
-| `RSS/Base/` | Pool of initial candidate `.res` structures. |
+| `RSS/Base/` | Pool of initial candidate [`.res`](/technical-reference/res-file/) structures. |
 | `DFT/` | Builds and submits VASP or ARES labeling jobs. |
-| `XSF/` | Converts finished DFT output into `.xsf` training data. |
+| `XSF/` | Converts finished DFT output into [`.xsf`](/technical-reference/xsf-file/) training data. |
 | `PD/` | Builds convex-hull and phase-diagram files. |
 | `POT/` | Generates ACNN training input and submits training jobs. |
 | `RELAX/` | Relaxes candidate structures with the trained ACNN potential. |
@@ -87,20 +87,20 @@ DFT backend:
 - Choose the backend at deployment time with `-e vasp` or `-e ares`.
 - For VASP, prepare `DFT/POTCAR-*`, edit `DFT/dyn_vasp_in`, and check `DFT/sub-vasp.sh`.
 - For ARES, prepare `DFT/*.upf`, edit `DFT/dyn_ares_in`, and check `DFT/sub-ares.sh`.
-- Make sure the pressure settings are consistent in `DFT/dyn_vasp_in`, `DFT/dyn_ares_in`, `PD/mkpd`, and `RELAX/dyn_batch_relax_bfgs`.
+- `acnn_deploy -p` writes the pressure into the generated DFT, phase-diagram, and relaxation scripts, so you normally do not need to edit pressure values by hand.
 
 Slurm and environment:
 
-- Edit partitions, core counts, wall times, and module-loading commands in `DFT/sub-*.sh`, `POT/sub.sh`, `RELAX/dyn_batch_relax_bfgs`, and `RSS/ag`.
+- Edit partitions, core counts, wall times, and module-loading commands in `DFT/sub-*.sh`, `POT/sub.sh`, and `RELAX/dyn_batch_relax_bfgs`.
 - If the system tag changes, also update job names such as `FPSrB`, `TRAINSrB`, `RELAXSrB`, and the matching `acnn_wait` calls in `auto`.
 
-Initial structures:
+Initial structures (unrelaxed structures):
 
-- Put the initial candidate `.res` files in `RSS/Base/`.
+- Put the initial candidate [`.res`](/technical-reference/res-file/) files in `RSS/Base/`.
 - These structures can come from AIRSS, CALYPSO, previous searches, or any generator that writes valid `.res` files.
 - In the first iteration, `DFT/mkdft` randomly selects structures from `RSS/Base/` for labeling.
 
-Seed structures:
+Seed structures (DFT-relaxed structures with computed energies):
 
 - Put known endpoint or reference structures in `SEED/`.
 - These are used to build the phase diagram, not automatically injected into training.
@@ -116,7 +116,6 @@ Iteration sizes:
 - Change the first-round DFT sampling count with `RANDMAX` in `DFT/mkdft`.
 - Change the number of structures optimized per iteration with `frame` in `RELAX/dyn_batch_relax_bfgs`.
 - Change relaxation grouping with `group`, `warp`, and `job_max` in `RELAX/dyn_batch_relax_bfgs`.
-- Change random-structure generation counts in `RSS/ag`, `RSS/dyn_grand`, or `RSS/dyn_gcs`.
 
 ### 3. Run with tmux
 
@@ -183,7 +182,6 @@ Then make the same element changes in the files listed below.
 The scripts are written for Slurm and use `safe_sbatch`, `acnn_wait`, and `acnn_limitjob`. Check the job names, partition names, core counts, and environment modules in:
 
 ```text
-RSS/ag
 DFT/sub-vasp.sh
 DFT/sub-ares.sh
 POT/sub.sh
@@ -199,14 +197,13 @@ Typical fields to change:
 source /public/env/compiler_intel2025 > /dev/null
 ```
 
-The default job names are:
+For this Sr-B example, the generated job names are:
 
 | Job name | Step |
 | --- | --- |
 | `FPSrB` | DFT labeling jobs |
 | `TRAINSrB` | ACNN training jobs |
 | `RELAXSrB` | ACNN relaxation jobs |
-| `STGENSrB` | Random-structure generation jobs |
 
 If you change `seed`, change these names as well, and update the corresponding `acnn_wait` calls in `auto`.
 
@@ -242,7 +239,7 @@ DFT/POTCAR-Sr
 DFT/POTCAR-B
 ```
 
-The default VASP INCAR generator uses:
+For a 40 GPa VASP deployment, the generated INCAR contains:
 
 ```text
 ENCUT    = 800
@@ -250,7 +247,7 @@ KSPACING = 0.20
 PSTRESS  = 400
 ```
 
-VASP `PSTRESS` is in kB, so `PSTRESS = 400` corresponds to 40 GPa. If you change the search pressure, keep `RELAX/dyn_batch_relax_bfgs`, `PD/mkpd`, `DFT/dyn_vasp_in`, and `DFT/dyn_ares_in` consistent.
+VASP `PSTRESS` is in kB, so `PSTRESS = 400` corresponds to 40 GPa. When the run directory is created by `acnn_deploy -p`, this value is written automatically.
 
 For ARES, edit:
 
@@ -260,7 +257,7 @@ DFT/sub-ares.sh
 DFT/*.upf
 ```
 
-The default ARES input uses:
+For a 40 GPa ARES deployment, the generated input contains:
 
 ```text
 ecutwfc  = 1200
@@ -283,39 +280,51 @@ RANDMAX=500
 res_file=$(find "$BASE" -name "*.res" | shuf | head -n $RANDMAX || true)
 ```
 
-You can fill `RSS/Base/` using AIRSS, CALYPSO, previous searches, or any other generator that produces valid `.res` files.
+You can fill `RSS/Base/` using previous searches or generated [`.res`](/technical-reference/res-file/) files. In the current template, the useful structure-generation scripts are `RSS/dyn_gcs` and `RSS/dyn_gcs_calypso`. Both read target compositions from `comp.txt`.
 
-The provided AIRSS generators are:
+Create `RSS/comp.txt` manually. It contains one composition and one generation count per line:
+
+```text
+Sr1B1  200
+Sr1B2  200
+Sr2B1  200
+```
+
+To keep `RSS/` clean, create a temporary generation directory and run the structure generator inside it. For AIRSS-based composition generation:
 
 ```console
 $ cd RSS
-$ ./dyn_grand 20000 32
+$ mkdir -p gen
+$ cd gen
+$ ../dyn_gcs ../comp.txt 4
 ```
 
-and, for composition-directed generation:
-
-```console
-$ ./gcom 150 200 > comp.txt
-$ ./dyn_gcs comp.txt 32
-```
-
-`dyn_grand` creates random structures in many `RAND*` folders. `dyn_gcs` reads compositions from `comp.txt`, writes one AIRSS input per composition, and generates `.res` files. The template currently contains Sr-B-specific values such as:
+`dyn_gcs` reads the compositions, writes one AIRSS input per composition, and generates `.res` files. The template currently contains Sr-B-specific values such as:
 
 ```text
 #SPECIES=Sr,B
-#NATOM=1-16
 #MINSEP=0.8 Sr-Sr=2.075 Sr-B=1.671 B-B=1.267
 ```
 
 Change these before using the scripts for another system.
 
-There is also a CALYPSO generator:
+For CALYPSO-based composition generation, run:
 
 ```console
-$ ./dyn_gcs_calypso comp.txt 32
+$ ../dyn_gcs_calypso ../comp.txt 4
 ```
 
-It creates `input.dat` files from the compositions, runs `calypso.x`, then converts `POSCAR_*` files into `.res` files. Check `SYS`, `ATOMIC_VOL`, and `DIST` in `dyn_gcs_calypso` before use.
+`dyn_gcs_calypso` creates `input.dat` files from the same `comp.txt`, runs `calypso.x`, then converts `POSCAR_*` files into `.res` files. Check `SYS`, `ATOMIC_VOL`, and `DIST` in `dyn_gcs_calypso` before use.
+
+After structure generation, move the generated `.res` files into `RSS/Base/`:
+
+```console
+$ mkdir -p ../Base
+$ find . -name "*.res" -type f -exec mv {} ../Base/ \;
+$ cd ..
+```
+
+This step is required. The first DFT iteration samples initial structures from `RSS/Base/`, not from the individual composition-generation directories.
 
 ## Step 2: Add reference seed structures
 
@@ -337,7 +346,7 @@ The phase-diagram step copies `SEED/*.res` into the current `PD/IT*/` directory 
 
 ## Step 3: Run one DFT labeling round
 
-From the run root, the automated loop runs:
+From the run root, the automated loop runs the DFT backend selected during deployment. For a VASP deployment this is:
 
 ```console
 $ cd DFT
@@ -345,6 +354,8 @@ $ ./mkdft vasp > log 2>&1
 $ cd ..
 $ acnn_wait FPSrB
 ```
+
+For an ARES deployment, use `./mkdft ares` instead.
 
 In iteration 0, `mkdft` samples from `RSS/Base/`. In later iterations, it uses structures selected by the previous relaxation/post-processing step:
 
@@ -359,18 +370,11 @@ For VASP, `batch_vasp` creates one directory per structure, writes `POSCAR`, `IN
 $ echo "y" | ./batch_vasp -p POTCAR-Sr -p POTCAR-B -ts sub.sh -ct scf *.res
 ```
 
-Supported calculation types are:
-
-```text
-scf
-cell-relax
-```
-
-The standard active-learning loop uses `scf`.
+The active-learning labeling step uses `-ct scf`.
 
 ## Step 4: Convert DFT results into ACNN data
 
-After the DFT jobs finish, convert the finished calculations to XSF:
+After the DFT jobs finish, convert the finished calculations to [XSF](/technical-reference/xsf-file/):
 
 ```console
 $ cd XSF
@@ -393,7 +397,7 @@ XSF/IT1/
 ...
 ```
 
-These `.xsf` files are the training data used by `POT/tr`.
+These [`.xsf`](/technical-reference/xsf-file/) files are the training data used by `POT/tr`.
 
 ## Step 5: Build the phase diagram
 
@@ -422,11 +426,13 @@ EVpG=0.0062415091
 H = EVpG * PRESS * VOL + energy
 ```
 
-The default pressure is:
+The pressure value is written by `acnn_deploy -p`. For a 40 GPa run, the generated script contains:
 
 ```bash
 PRESS=40
 ```
+
+For other pressure points, `acnn_deploy` writes the corresponding value.
 
 For binary and ternary systems, `mkpd` can also generate plotting files through `gracebat` and `Rscript` if those commands are available.
 
@@ -438,7 +444,6 @@ Run:
 $ cd POT
 $ ./tr
 $ cd ..
-$ acnn_wait STGENSrB
 $ acnn_wait TRAINSrB
 ```
 
@@ -502,13 +507,13 @@ The relaxation script selects the newest trained model:
 pot=$(ls "$pot_dir"/model*/model-* | sort -V | tail -n 1)
 ```
 
-It then samples structures from `RSS/Base/`, splits them into groups, and submits multiple Slurm tasks that run:
+It then samples structures from `RSS/Base/`, splits them into groups, and submits multiple Slurm tasks. For a 40 GPa Sr-B run, the generated relaxation command uses:
 
 ```console
 $ acnn_relax -p 40 -m MODEL -t Sr,B
 ```
 
-Important defaults:
+Important generated parameters:
 
 ```text
 press   = 40
@@ -631,8 +636,6 @@ Or run it with `nohup`:
 $ nohup ./auto > log 2>&1 &
 ```
 
-> ACNN has been tested across multiple systems and demonstrates high efficiency, reliability, and success rate (except for those who don't know how to use it).
-
 Watch progress with:
 
 ```console
@@ -657,11 +660,11 @@ The current template is Sr-B-specific. Use this checklist before launching a new
 | Item | Files |
 | --- | --- |
 | System tag | `auto`, `RELAX/clean_traj`, job names in submit scripts |
-| Element list | `POT/tr`, `RELAX/dyn_batch_relax_bfgs`, `RSS/dyn_grand`, `RSS/dyn_gcs`, `RSS/dyn_gcs_calypso` |
-| Bond limits | `auto`, `RSS/dyn_grand`, `RSS/dyn_gcs`, `RSS/dyn_gcs_calypso` |
-| Pressure | `PD/mkpd`, `RELAX/dyn_batch_relax_bfgs`, `DFT/dyn_vasp_in`, `DFT/dyn_ares_in` |
+| Element list | `POT/tr`, `RELAX/dyn_batch_relax_bfgs`, `RSS/dyn_gcs`, `RSS/dyn_gcs_calypso` |
+| Bond limits | `auto`, `RSS/dyn_gcs`, `RSS/dyn_gcs_calypso` |
+| Pressure | Set by `acnn_deploy -p`; only check `PD/mkpd`, `RELAX/dyn_batch_relax_bfgs`, `DFT/dyn_vasp_in`, and `DFT/dyn_ares_in` if you edit scripts manually. |
 | Pseudopotentials | `DFT/POTCAR-*` or `DFT/*.upf` |
-| Slurm partition and modules | `DFT/sub-*.sh`, `POT/sub.sh`, `RELAX/dyn_batch_relax_bfgs`, `RSS/ag` |
+| Slurm partition and modules | `DFT/sub-*.sh`, `POT/sub.sh`, `RELAX/dyn_batch_relax_bfgs` |
 | Project path | `RELAX/dyn_batch_relax_bfgs` |
 
 The relaxation script currently contains an absolute project path:
@@ -744,7 +747,7 @@ For an already configured run directory:
 $ ./auto > log 2>&1
 ```
 
-For a manual single iteration:
+For a manual single iteration, using VASP as the backend:
 
 ```console
 $ cd DFT && ./mkdft vasp > log 2>&1 && cd ..
@@ -763,3 +766,5 @@ $ acnn_wait RELAXSrB
 $ cd RELAX && ./ppr >> log 2>&1 && cd ..
 $ cd RELAX && ./clean_traj >> log 2>&1 & cd ..
 ```
+
+> ACNN has been tested across multiple systems and demonstrates high efficiency, reliability, and success rate (except for those who don't know how to use it).

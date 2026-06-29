@@ -18,14 +18,12 @@ en:
       children:
         - title: Utilities
           url: /technical-reference/utilities/
-        - title: Format res
+        - title: .res format
           url: /technical-reference/res-file/
-        - title: Format xsf
+        - title: .xsf format
           url: /technical-reference/xsf-file/
     - title: Tutorials
       children:
-        - title: Examples
-          url: /tutorials/examples/
         - title: High-pressure searches
           url: /how-to-guides/high-pressure-binary-searches/
 
@@ -51,11 +49,15 @@ zh:
     - title: 技术参考
       children:
         - title: 工具
-          url: /technical-reference/utilities/
+          url: /zh/technical-reference/utilities/
         - title: res 格式
-          url: /technical-reference/res-file/
+          url: /zh/technical-reference/res-file/
         - title: xsf 格式
-          url: /technical-reference/xsf-file/
+          url: /zh/technical-reference/xsf-file/
+    - title: Tutorials
+      children:
+        - title: High-pressure searches
+          url: /zh/how-to-guides/high-pressure-binary-searches/
     - title: 外部链接
       children:
         - title: Ma Group

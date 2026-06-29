@@ -3,7 +3,7 @@ title: "Examples"
 layout: single
 classes: wide
 lang: en
-lang-ref: examples
+lang-ref: bak-examples
 sidebar:
   nav: "docs"
 ---
