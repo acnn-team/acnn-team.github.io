@@ -9,66 +9,39 @@ sidebar:
 permalink: /
 ---
 
-Attention Coupled Neural Network(ACNN) is a machine learning potential(MLP) approach for atomic simulations.
-The original purpose was to serve as part of artificial intelligence module for the _ab initio_ Real-space Electronic Structure (ARES) code. 
-However it can be relatively straightforward to be used independently. 
+Attention Coupled Neural Network (ACNN) is a machine-learning potential framework for atomistic simulations. It can be used for structure relaxation, molecular dynamics, phonon-related workflows, high-throughput screening, and crystal structure prediction. ACNN was originally developed as the artificial-intelligence module of the _ab initio_ Real-space Electronic Structure (ARES) code, and can also be used as an independent toolkit.
 
-[//]: # (The main design concept is to couple a multi-head self-attention)
+ACNN is designed for problems where direct first-principles calculations are accurate but expensive. It learns from first-principles data and provides an efficient interatomic potential that can be used repeatedly in downstream simulations. This makes ACNN useful whenever users need to extend DFT-quality information to larger systems, longer time scales, or many candidate structures.
 
-[//]: # (mechanism with traditional short-range machine learning potentials to improve)
+## What ACNN Provides
 
-[//]: # (the accuracy of machine learning potentials, allows users to train machine)
+- A neural-network interatomic potential for atomic structure optimization and simulation.
+- ACNN-Relax, a structure relaxation engine based on trained ACNN models.
+- Workflows for molecular dynamics, phonon acceleration, structure relaxation, and structure screening.
+- Active-learning utilities for DFT labeling, database construction, model training, and iterative improvement.
+- Structure-search utilities for crystal structure prediction when coupled with structure-generation programs.
 
-[//]: # (learning potential models with different levels of accuracy, including or excluding)
+## Program Interfaces
 
-[//]: # (attention mechanisms, based on their specific accuracy requirements.)
+ACNN is primarily written in C++ and based on LibTorch, the C++ distribution of PyTorch. The toolkit can work together with several external programs:
 
-ACNN is primarily written in C++ and based on LibTorch (C++ Distributions of PyTorch).
-Some practical utilities are placed in `scripts/`,
-the external program interfaces are placed in `interface/`.
+- ARES and ARES-PHONON for real-space first-principles calculations and phonon workflows.
+- LAMMPS for molecular dynamics and large-scale atomistic simulations.
+- CALYPSO and AIRSS for crystal structure generation and structure-search workflows.
+- Python-based scripts for data processing, workflow control, and analysis.
 
-Currently, ACNN can interface with:
-- ARES-PW/MD/Phonon
-- LAMMPS (Including LAMMPS based packages)
-- Python
-- CALYPSO
-- AIRSS
+## Documentation Map
 
-Licence and Citation
---------------------
+- **Getting Started** introduces installation, examples, contributors, and this project overview.
+- **Tutorials** describe practical ACNN workflows.
+- **How-to Guides** focus on complete task-oriented procedures.
+- **Technical Reference** records file formats, utilities, and external-program interfaces.
+- **External** explains how ACNN connects with other scientific software.
 
-All the notes are released under the [GPL 2.0 licence](https://www.gnu.org/licenses/gpl-2.0.html). See the `LICENCE` file for more details. 
+## Licence and Citation
 
-References
-----------
+All the notes are released under the [GPL 2.0 licence](https://www.gnu.org/licenses/gpl-2.0.html). See the `LICENCE` file for more details.
+
+## References
 
 1. Jiaxiang Li _et al._, _npj Computational Materials_ **12**, 101 (2026). [[Link](https://www.nature.com/articles/s41524-026-01971-9)]
-
-[//]: # (&#40;1&#41; C.J. Pickard and R.J. Needs, Phys. Rev. Lett., **97**, 045504 &#40;2006&#41; [[Link][1]]  )
-
-[//]: # (&#40;2&#41; C.J. Pickard and R.J. Needs, J. Phys.: Condens. Matter, **23**, 053201 &#40;2011&#41; [[Link][2]]  )
-
-[//]: # (&#40;3&#41; C.J. Pickard and R.J. Needs, Nat. Phys., **3**, 473 &#40;2007&#41; [[Link][3]]  )
-
-[//]: # (&#40;4&#41; C.J. Pickard and R.J. Needs, Nat. Mater., **9**, 624 &#40;2010&#41; [[Link][4]]  )
-
-[//]: # (&#40;5&#41; C.J. Pickard and R.J. Needs, Nat. Mater., **7**, 775 &#40;2008&#41; [[Link][5]]  )
-
-[//]: # (&#40;6&#41; A.J. Morris, C.J. Pickard and R.J. Needs, Phys. Rev. B, **78**, 184102 &#40;2008&#41; [[Link][6]]  )
-
-[//]: # (&#40;7&#41; G. Schusteritsch and C.J. Pickard, Phys. Rev. B, **90**, 035424 &#40;2014&#41; [[Link][7]]  )
-
-[//]: # ()
-[//]: # ([1]: https://doi.org/10.1103/PhysRevLett.97.045504)
-
-[//]: # ([2]: https://doi.org/10.1088/0953-8984/23/5/053201)
-
-[//]: # ([3]: https://doi.org/10.1038/nphys625)
-
-[//]: # ([4]: https://doi.org/10.1038/nmat2796)
-
-[//]: # ([5]: https://doi.org/10.1038/nmat2261)
-
-[//]: # ([6]: https://doi.org/10.1103/PhysRevB.78.184102)
-
-[//]: # ([7]: https://doi.org/10.1103/PhysRevB.90.035424)
