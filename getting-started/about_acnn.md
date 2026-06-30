@@ -32,11 +32,10 @@ ACNN is primarily written in C++ and based on LibTorch, the C++ distribution of 
 
 ## Documentation Map
 
-- **Getting Started** introduces installation, examples, contributors, and this project overview.
-- **Tutorials** describe practical ACNN workflows.
-- **How-to Guides** focus on complete task-oriented procedures.
-- **Technical Reference** records file formats, utilities, and external-program interfaces.
-- **External** explains how ACNN connects with other scientific software.
+- **[Getting Started](/getting-started/installation/)** introduces installation, examples, contributors, and this project overview.
+- **[Tutorials](/how-to-guides/high-pressure-binary-searches/)** describe practical ACNN workflows.
+- **[Technical Reference](/technical-reference/utilities/)** records file formats, utilities, and external-program interfaces.
+- **[External](/external/external-utilities/)** explains how ACNN connects with other scientific software.
 
 ## Licence and Citation
 

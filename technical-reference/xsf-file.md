@@ -33,7 +33,7 @@ PRIMVEC
          -0.15639807          4.99541232          0.00000000
          -2.42073105         -2.49770625          4.56496531
 PRIMCOORD
-11 1
+3 1
 Sr          0.67926000          4.18551000          0.00000000         -0.64865900          0.62866700         -0.00000800
 B           1.28326000          3.60012000          1.60283000         -8.12401900          7.87363300          7.95771100
 B          -1.13747000          1.10242000          2.96214000         -8.12400300          7.87365100         -7.95770700
@@ -83,11 +83,13 @@ PRIMVEC
 
 ```console
 PRIMCOORD
-11 1
+3 1
 Sr          0.67926000          4.18551000          0.00000000         -0.64865900          0.62866700         -0.00000800
+B           1.28326000          3.60012000          1.60283000         -8.12401900          7.87363300          7.95771100
+B          -1.13747000          1.10242000          2.96214000         -8.12400300          7.87365100         -7.95770700
 ```
 
-The first number after `PRIMCOORD` is the number of atoms. Each following atom line contains:
+The first number after `PRIMCOORD` is the number of atoms, and it must match the number of atom lines that follow. The second number is the XCrySDen animation-step flag, normally written as `1` for a single structure. Each atom line contains:
 
 ```text
 <element> <x> <y> <z> <fx> <fy> <fz>

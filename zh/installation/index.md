@@ -8,11 +8,11 @@ sidebar:
   nav: "docs"
 ---
 
-# ACNN-CSP Installation Guide
+# ACNN Conda 安装指南
 
-ACNN-CSP 是通过 Conda 分发的晶体结构预测和基于神经网络势的结构优化工具包。
+本页介绍如何通过 Conda 安装 ACNN。Conda 包会安装 ACNN 主要可执行程序、ACNN-Relax、工作流工具，以及大多数 ACNN 任务所需的运行库。
 
-工具包包含：
+安装完成后，环境中包含：
 
 - **ACNN** — 神经网络原子间势
 - **ACNN-Relax** — 结构优化引擎

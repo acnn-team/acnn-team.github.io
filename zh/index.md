@@ -31,11 +31,10 @@ ACNN 主要使用 C++ 编写，并基于 LibTorch（PyTorch 的 C++ 发行版）
 
 ## 文档导航
 
-- **Getting Started**：安装、示例、贡献者和项目概览。
-- **Tutorials**：实际 ACNN 工作流教程。
-- **How-to Guides**：面向具体任务的完整流程说明。
-- **Technical Reference**：文件格式、工具脚本和外部程序接口说明。
-- **External**：ACNN 与其他科学计算软件的协同方式。
+- **[Getting Started](/zh/installation/)**：安装、示例、贡献者和项目概览。
+- **[Tutorials](/zh/how-to-guides/high-pressure-binary-searches/)**：实际 ACNN 工作流教程。
+- **[Technical Reference](/zh/technical-reference/utilities/)**：文件格式、工具脚本和外部程序接口说明。
+- **[External](/zh/external-utilities/)**：ACNN 与其他科学计算软件的协同方式。
 
 ## 许可和引用
 

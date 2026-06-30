@@ -8,11 +8,11 @@ sidebar:
   nav: "docs"
 ---
 
-# ACNN-CSP Installation Guide
+# ACNN Conda Installation Guide
 
-ACNN-CSP is a Conda-distributed toolkit for crystal structure prediction and neural-network potential based structure optimization.
+This page describes how to install ACNN with Conda. The Conda package installs the main ACNN executables, ACNN-Relax, workflow utilities, and the runtime libraries required by most ACNN tasks.
 
-The toolkit includes
+After installation, the environment includes
 
 - **ACNN** — Neural-network interatomic potential
 - **ACNN-Relax** — Structure relaxation engine
