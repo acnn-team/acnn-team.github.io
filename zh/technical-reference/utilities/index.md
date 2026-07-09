@@ -70,7 +70,7 @@ $ acnn_limitjob <job_name> <max_count>
 
 ### `acnn_outcar2seed`
 
-把 VASP `OUTCAR` 转换成 DFT 优化后的 seed [`.res`](/zh/technical-reference/res-file/) 结构。
+把 VASP `OUTCAR` 转换成 DFT 优化后的 seed [`.res`]({{ '/zh/technical-reference/res-file/' | relative_url }}) 结构。
 
 ```console
 $ acnn_outcar2seed OUTCAR SrB-end-Sr-1.res
@@ -104,7 +104,7 @@ $ acnn_ares2seed <ares_output.dat> <SEED_NAME>
 
 ### `acnn_ares2xsf`
 
-把 ARES SCF 输出转换为 ACNN [`.xsf`](/zh/technical-reference/xsf-file/) 训练数据。
+把 ARES SCF 输出转换为 ACNN [`.xsf`]({{ '/zh/technical-reference/xsf-file/' | relative_url }}) 训练数据。
 
 ```console
 $ acnn_ares2xsf ares_output.dat > sample.xsf

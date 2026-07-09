@@ -31,9 +31,9 @@ Directory roles:
 | Directory | Purpose |
 | --- | --- |
 | `RSS/` | Generates random structures with AIRSS or CALYPSO. |
-| `RSS/Base/` | Pool of initial candidate [`.res`](/technical-reference/res-file/) structures. |
+| `RSS/Base/` | Pool of initial candidate [`.res`]({{ '/technical-reference/res-file/' | relative_url }}) structures. |
 | `DFT/` | Builds and submits VASP or ARES labeling jobs. |
-| `XSF/` | Converts finished DFT output into [`.xsf`](/technical-reference/xsf-file/) training data. |
+| `XSF/` | Converts finished DFT output into [`.xsf`]({{ '/technical-reference/xsf-file/' | relative_url }}) training data. |
 | `PD/` | Builds convex-hull and phase-diagram files. |
 | `POT/` | Generates ACNN training input and submits training jobs. |
 | `RELAX/` | Relaxes candidate structures with the trained ACNN potential. |
@@ -96,7 +96,7 @@ Slurm and environment:
 
 Initial structures (unrelaxed structures):
 
-- Put the initial candidate [`.res`](/technical-reference/res-file/) files in `RSS/Base/`.
+- Put the initial candidate [`.res`]({{ '/technical-reference/res-file/' | relative_url }}) files in `RSS/Base/`.
 - These structures can come from AIRSS, CALYPSO, previous searches, or any generator that writes valid `.res` files.
 - In the first iteration, `DFT/mkdft` randomly selects structures from `RSS/Base/` for labeling.
 
@@ -280,7 +280,7 @@ RANDMAX=500
 res_file=$(find "$BASE" -name "*.res" | shuf | head -n $RANDMAX || true)
 ```
 
-You can fill `RSS/Base/` using previous searches or generated [`.res`](/technical-reference/res-file/) files. In the current template, the useful structure-generation scripts are `RSS/dyn_gcs` and `RSS/dyn_gcs_calypso`. Both read target compositions from `comp.txt`.
+You can fill `RSS/Base/` using previous searches or generated [`.res`]({{ '/technical-reference/res-file/' | relative_url }}) files. In the current template, the useful structure-generation scripts are `RSS/dyn_gcs` and `RSS/dyn_gcs_calypso`. Both read target compositions from `comp.txt`.
 
 Create `RSS/comp.txt` manually. It contains one composition and one generation count per line:
 
@@ -374,7 +374,7 @@ The active-learning labeling step uses `-ct scf`.
 
 ## Step 4: Convert DFT results into ACNN data
 
-After the DFT jobs finish, convert the finished calculations to [XSF](/technical-reference/xsf-file/):
+After the DFT jobs finish, convert the finished calculations to [XSF]({{ '/technical-reference/xsf-file/' | relative_url }}):
 
 ```console
 $ cd XSF
@@ -397,7 +397,7 @@ XSF/IT1/
 ...
 ```
 
-These [`.xsf`](/technical-reference/xsf-file/) files are the training data used by `POT/tr`.
+These [`.xsf`]({{ '/technical-reference/xsf-file/' | relative_url }}) files are the training data used by `POT/tr`.
 
 ## Step 5: Build the phase diagram
 

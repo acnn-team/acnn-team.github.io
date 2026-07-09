@@ -83,7 +83,7 @@ DFT/POTCAR-A  DFT/POTCAR-B
 
 Generate Random Structures
 --------------------------
-To be precise, ACNN does not restrict the sources of structure generation, but structure files should follow the [`.res` format](/technical-reference/res-file/).
+To be precise, ACNN does not restrict the sources of structure generation, but structure files should follow the [`.res` format]({{ '/technical-reference/res-file/' | relative_url }}).
 
 Generally, the prepared structures are placed in the `DFT/Base` directory.
 
@@ -112,7 +112,7 @@ If a larger number of atoms were requested, then the volume of the cell would be
 
 Make Seeds
 ----------
-The seed here refers to the known structures in the current search system. Their purpose is limited to constructing phase diagrams, and their information will not be incorporated into any artificial intelligence process. Seed structures are stored as [`.res` files](/technical-reference/res-file/).
+The seed here refers to the known structures in the current search system. Their purpose is limited to constructing phase diagrams, and their information will not be incorporated into any artificial intelligence process. Seed structures are stored as [`.res` files]({{ '/technical-reference/res-file/' | relative_url }}).
 
 ```console
 $ acnn_outcar2seed OUTCAR AB-end-A-1.res      # VASP OUTCAR to seed file

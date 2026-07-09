@@ -12,8 +12,8 @@ sidebar:
 
 ## 示例目录
 
-- [ACNN 基础示例](/tutorials/examples/)：训练与评估 ACNN 模型，以及使用 ACNN 模型执行原子模拟。
-- [使用 ACNN 进行二元结构搜索](/tutorials/csp_binary/)：介绍 ACNN 在二元体系结构搜索流程中的使用方式。
+- [ACNN 基础示例]({{ '/tutorials/examples/' | relative_url }})：训练与评估 ACNN 模型，以及使用 ACNN 模型执行原子模拟。
+- [使用 ACNN 进行二元结构搜索]({{ '/tutorials/csp_binary/' | relative_url }})：介绍 ACNN 在二元体系结构搜索流程中的使用方式。
 
 ## 后续补充方向
 

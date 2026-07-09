@@ -10,7 +10,7 @@ sidebar:
 
 ACNN uses SHELX-style `.res` files as a compact structure format. In a high-pressure active-learning run, `.res` files are used for initial candidate structures, DFT-relaxed seed structures, phase-diagram structures, and relaxed structures selected for the next iteration.
 
-Use `.res` when you need to store or exchange a crystal structure. Use [`.xsf`](/technical-reference/xsf-file/) when you need ACNN training data with energy, virial, and forces.
+Use `.res` when you need to store or exchange a crystal structure. Use [`.xsf`]({{ '/technical-reference/xsf-file/' | relative_url }}) when you need ACNN training data with energy, virial, and forces.
 
 ## Where `.res` files appear
 

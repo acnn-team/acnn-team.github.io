@@ -58,7 +58,7 @@
             {% else %}
               {% assign active = "" %}
             {% endif %}
-          <li><a href="{{ site.base-url }}{{ post.url }}" class="{{ active }}">{{ site.data.languages[post.lang].label }}</a></li>
+          <li><a href="{{ post.url | relative_url }}" class="{{ active }}">{{ site.data.languages[post.lang].label }}</a></li>
           {% endfor %}
           </ul>
         </li>

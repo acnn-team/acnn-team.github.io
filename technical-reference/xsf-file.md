@@ -10,7 +10,7 @@ sidebar:
 
 ACNN uses `.xsf` files as the labeled data format for training. In the active-learning workflow, DFT calculations are first completed in `DFT/`, then converted into `.xsf` files in `XSF/IT*/`. These `.xsf` files are copied into `POT/IT*/DT/` and used by the ACNN training step.
 
-Use [`.res`](/technical-reference/res-file/) for structure pools, seed structures, and phase-diagram files. Use `.xsf` for training data that contains the structure together with DFT energy, virial, and forces.
+Use [`.res`]({{ '/technical-reference/res-file/' | relative_url }}) for structure pools, seed structures, and phase-diagram files. Use `.xsf` for training data that contains the structure together with DFT energy, virial, and forces.
 
 ## Where `.xsf` files appear
 

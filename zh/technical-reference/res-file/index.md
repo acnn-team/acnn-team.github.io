@@ -10,7 +10,7 @@ sidebar:
 
 ACNN 使用 SHELX 风格的 `.res` 文件作为紧凑的结构文件格式。在高压主动学习搜索中，`.res` 文件用于初始候选结构、DFT 优化后的 seed 结构、相图结构，以及每一轮 ACNN 优化后选入下一轮 DFT 的结构。
 
-当你需要保存或传递晶体结构时，使用 `.res`。当你需要包含 DFT 能量、virial 和力的 ACNN 训练数据时，使用 [`.xsf`](/zh/technical-reference/xsf-file/)。
+当你需要保存或传递晶体结构时，使用 `.res`。当你需要包含 DFT 能量、virial 和力的 ACNN 训练数据时，使用 [`.xsf`]({{ '/zh/technical-reference/xsf-file/' | relative_url }})。
 
 ## `.res` 文件出现的位置
 

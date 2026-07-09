@@ -70,7 +70,7 @@ This is normally called inside generated batch scripts before submitting more jo
 
 ### `acnn_outcar2seed`
 
-Convert a VASP `OUTCAR` into a DFT-relaxed seed [`.res`](/technical-reference/res-file/) structure.
+Convert a VASP `OUTCAR` into a DFT-relaxed seed [`.res`]({{ '/technical-reference/res-file/' | relative_url }}) structure.
 
 ```console
 $ acnn_outcar2seed OUTCAR SrB-end-Sr-1.res
@@ -104,7 +104,7 @@ The script extracts the final lattice, direct coordinates, element counts, entha
 
 ### `acnn_ares2xsf`
 
-Convert an ARES SCF output file into ACNN [`.xsf`](/technical-reference/xsf-file/) training data.
+Convert an ARES SCF output file into ACNN [`.xsf`]({{ '/technical-reference/xsf-file/' | relative_url }}) training data.
 
 ```console
 $ acnn_ares2xsf ares_output.dat > sample.xsf

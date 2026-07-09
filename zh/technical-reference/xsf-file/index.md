@@ -10,7 +10,7 @@ sidebar:
 
 ACNN 使用 `.xsf` 文件作为训练数据格式。在主动学习流程中，DFT 计算先在 `DFT/` 中完成，然后转换为 `XSF/IT*/` 中的 `.xsf` 文件。这些 `.xsf` 文件会被复制到 `POT/IT*/DT/`，并用于 ACNN 势函数训练。
 
-结构池、seed 结构和相图文件使用 [`.res`](/zh/technical-reference/res-file/)。包含 DFT 能量、virial 和力的训练数据使用 `.xsf`。
+结构池、seed 结构和相图文件使用 [`.res`]({{ '/zh/technical-reference/res-file/' | relative_url }})。包含 DFT 能量、virial 和力的训练数据使用 `.xsf`。
 
 ## `.xsf` 文件出现的位置
 
