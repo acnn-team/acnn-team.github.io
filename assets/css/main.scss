@@ -61,6 +61,19 @@ $acnn-blue: #063E72;
   background: #fff;
 }
 
+.greedy-nav .hidden-links {
+  background: #fff;
+}
+
+.greedy-nav .hidden-links a {
+  color: #222831;
+}
+
+.greedy-nav .hidden-links a:hover {
+  color: $acnn-blue;
+  background: #f2f3f3;
+}
+
 .search__toggle,
 .greedy-nav__toggle {
   color: #fff;
