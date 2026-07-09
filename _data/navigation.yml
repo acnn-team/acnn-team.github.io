@@ -1,5 +1,13 @@
 en:
   main:
+    - title: Docs
+      url: /
+    - title: Research
+      url: /research/
+    - title: FAQ
+      url: /faq/
+    - title: Contact
+      url: /contact/
   
   docs:
     - title: Getting Started
@@ -36,6 +44,14 @@ en:
           
 zh:
   main:
+    - title: 文档
+      url: /zh/
+    - title: 研究
+      url: /zh/research/
+    - title: FAQ
+      url: /zh/faq/
+    - title: 联系
+      url: /zh/contact/
 
   docs:
     - title: 入门

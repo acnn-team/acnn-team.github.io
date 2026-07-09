@@ -1,6 +1,11 @@
 {% assign navigation = site.data.navigation[page.lang][include.nav] %}
 
 <nav class="nav__list">
+  {% if site.logo %}
+    <a class="sidebar-logo" href="{{ '/' | relative_url }}">
+      <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}">
+    </a>
+  {% endif %}
   {% if page.sidebar.title %}<h3 class="nav__title" style="padding-left: 0;">{{ page.sidebar.title }}</h3>{% endif %}
   <input id="ac-toc" name="accordion-toc" type="checkbox" />
   <label for="ac-toc">{{ site.data.ui-text[page.lang].menu_label | default: "Toggle Menu" }}</label>

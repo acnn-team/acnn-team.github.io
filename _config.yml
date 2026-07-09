@@ -9,8 +9,13 @@ twitter_username:
 github_username: 
 minimal_mistakes_skin: "air"
 logo: "/assets/images/acnn-logo-hori.svg"
-masthead_title: "&nbsp;"
+masthead_title: "ACNN Documentation"
 locale: en-US
+search: true
+search_provider: lunr
+search_full_content: true
+lunr:
+  search_within_pages: true
 
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes

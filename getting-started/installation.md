@@ -8,11 +8,11 @@ sidebar:
   nav: "docs"
 ---
 
-# ACNN Conda Installation Guide
+ACNN can be installed either from the released Conda package or from source. The Conda package is the recommended path for most users because it installs the main ACNN executables, ACNN-Relax, workflow utilities, and the runtime libraries required by most ACNN tasks.
 
-This page describes how to install ACNN with Conda. The Conda package installs the main ACNN executables, ACNN-Relax, workflow utilities, and the runtime libraries required by most ACNN tasks.
+## Conda Package
 
-After installation, the environment includes
+After Conda installation, the environment includes
 
 - **ACNN** — Neural-network interatomic potential
 - **ACNN-Relax** — Structure relaxation engine
@@ -20,8 +20,6 @@ After installation, the environment includes
 - **Runtime dependencies** — LibTorch, OpenBLAS, and other required libraries
 
 ---
-
-## Conda Installation
 
 ### System Requirements
 

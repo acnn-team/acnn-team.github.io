@@ -8,11 +8,11 @@ sidebar:
   nav: "docs"
 ---
 
-# ACNN Conda 安装指南
+ACNN 可以通过发布的 Conda 包安装，也可以从源码构建。对大多数用户来说，Conda 包是推荐方式，因为它会安装 ACNN 主要可执行程序、ACNN-Relax、工作流工具，以及大多数 ACNN 任务所需的运行库。
 
-本页介绍如何通过 Conda 安装 ACNN。Conda 包会安装 ACNN 主要可执行程序、ACNN-Relax、工作流工具，以及大多数 ACNN 任务所需的运行库。
+## Conda 包安装
 
-安装完成后，环境中包含：
+Conda 安装完成后，环境中包含：
 
 - **ACNN** — 神经网络原子间势
 - **ACNN-Relax** — 结构优化引擎
@@ -20,8 +20,6 @@ sidebar:
 - **Runtime dependencies** — LibTorch、OpenBLAS 以及其他必需运行库
 
 ---
-
-## Conda 安装
 
 ### 系统要求
 
