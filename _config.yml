@@ -10,6 +10,7 @@ github_username:
 minimal_mistakes_skin: "air"
 logo: "/assets/images/acnn-logo-hori.svg"
 masthead_title: "&nbsp;"
+locale: en-US
 
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
@@ -45,4 +46,5 @@ defaults:
       path: zh
     values:
       lang: zh
+      locale: zh-CN
       base-url: "/zh/"
