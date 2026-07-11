@@ -3,8 +3,8 @@ title: ACNN Documentation
 email: 
 description: >-
   Documentation for the Attention Coupled Neural Network (ACNN) package.
-baseurl: /notes.github.io
-url: https://bonjour221.github.io
+baseurl: ""
+url: https://acnn-team.github.io
 twitter_username: 
 github_username: 
 minimal_mistakes_skin: "air"
