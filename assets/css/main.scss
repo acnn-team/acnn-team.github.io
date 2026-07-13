@@ -249,3 +249,62 @@ figure.highlight {
 .nav__list .nav__items .active {
  color: #063E72 ;
 }
+
+.faq-list {
+  margin-top: 1.5rem;
+  border-top: 1px solid #d8dee4;
+}
+
+.faq-item {
+  border-bottom: 1px solid #d8dee4;
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 1.05rem 0;
+  color: #1f2933;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.faq-item summary::before {
+  content: "+";
+  flex: 0 0 auto;
+  width: 1rem;
+  color: $acnn-blue;
+  font-weight: 700;
+}
+
+.faq-item[open] summary {
+  padding-bottom: 0.65rem;
+  color: $acnn-blue;
+}
+
+.faq-item[open] summary::before {
+  content: "-";
+}
+
+.faq-item summary::marker,
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item > :not(summary) {
+  margin-left: 1.75rem;
+}
+
+.faq-item > p:first-of-type {
+  margin-top: 0;
+}
+
+.faq-item > p:last-child {
+  margin-bottom: 1.25rem;
+}
+
+.faq-item .highlight {
+  margin-left: 1.75rem;
+}
