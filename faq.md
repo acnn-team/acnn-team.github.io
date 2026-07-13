@@ -52,4 +52,19 @@ In short, atomic volume controls the initial cell-size scale, while minimum bond
 
 </details>
 
+<details class="faq-item" markdown="1">
+<summary>In crystal structure prediction, how should I set `comp.txt`?</summary>
+
+In the ACNN crystal-structure-prediction workflow, `comp.txt` defines the target compositions used for candidate structure generation. The structure-generation scripts read this file to decide which stoichiometries should be sampled in the search.
+
+If you already know the composition range you want to explore, it is usually best to include the full target composition set from the beginning. This allows the initial candidate structures, the active-learning iterations, and the evolving ACNN potential to cover the intended composition space more consistently.
+
+You can also add new compositions later. In that case, update `comp.txt`, generate or add candidate structures for the new compositions, and continue the workflow. This is useful when early results suggest that an additional composition region should be sampled.
+
+However, adding a very different composition late in the workflow may require some care. The current ACNN potential has been trained mainly on the structures and compositions already sampled, so its predictions may be less reliable for newly introduced composition regions. If the new compositions are close to the existing search space, continuing from the current workflow is usually reasonable. If they are far from the original composition range, it may be safer to add enough first-principles-labeled seed structures, expand the candidate-structure set, or start a new run.
+
+In short, `comp.txt` controls which compositions are explored. For a broad phase-diagram search, include the main target compositions as early as possible; for follow-up exploration, new compositions can be added later, but the training-data coverage should be checked carefully.
+
+</details>
+
 </div>
