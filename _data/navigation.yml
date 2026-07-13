@@ -32,7 +32,7 @@ en:
           url: /technical-reference/xsf-file/
     - title: Tutorials
       children:
-        - title: High-pressure searches
+        - title: Crystal structure prediction
           url: /how-to-guides/high-pressure-binary-searches/
 
     - title: External Links
@@ -72,7 +72,7 @@ zh:
           url: /zh/technical-reference/xsf-file/
     - title: Tutorials
       children:
-        - title: High-pressure searches
+        - title: Crystal structure prediction
           url: /zh/how-to-guides/high-pressure-binary-searches/
     - title: 外部链接
       children:

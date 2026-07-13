@@ -13,7 +13,7 @@ ACNN can be used together with ARES, LAMMPS, AIRSS, CALYPSO, and helper scripts 
 
 ## Where should I start?
 
-Start with the [installation guide]({{ '/getting-started/installation/' | relative_url }}) and then follow the [high-pressure search tutorial]({{ '/how-to-guides/high-pressure-binary-searches/' | relative_url }}) if you want to run an active-learning structure search.
+Start with the [installation guide]({{ '/getting-started/installation/' | relative_url }}) and then follow the [crystal structure prediction tutorial]({{ '/how-to-guides/high-pressure-binary-searches/' | relative_url }}) if you want to run an active-learning structure search.
 
 ## Where are file formats documented?
 

@@ -1,5 +1,5 @@
 ---
-title: "High-pressure structure searches with ACNN active learning"
+title: "Crystal structure prediction with ACNN active learning"
 layout: single
 classes: wide
 lang: zh
@@ -8,7 +8,7 @@ sidebar:
   nav: "docs"
 ---
 
-This guide describes the current ACNN active-learning workflow for high-pressure crystal structure searches. The example scripts are written for the Sr-B system at 40 GPa, but the same workflow can be adapted to other binary or multi-component systems by changing the system tag, element list, pseudopotentials, bond limits, deployment pressure, and scheduler settings.
+This guide describes the current ACNN active-learning workflow for crystal structure prediction. The example scripts are written for the Sr-B system at 40 GPa, but the same workflow can be adapted to other binary or multi-component systems by changing the system tag, element list, pseudopotentials, bond limits, deployment pressure, and scheduler settings.
 
 The workflow is an iterative loop:
 
