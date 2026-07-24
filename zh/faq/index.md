@@ -12,7 +12,7 @@ ACNN 可以与 ARES、LAMMPS、AIRSS、CALYPSO 以及用于数据转换和工作
 
 ## 我应该从哪里开始？
 
-建议先阅读[安装方法]({{ '/zh/installation/' | relative_url }})，如果要运行主动学习结构预测，可以继续阅读[晶体结构预测教程]({{ '/zh/how-to-guides/high-pressure-binary-searches/' | relative_url }})。
+建议先阅读[安装方法]({{ '/zh/installation/' | relative_url }})，如果要运行主动学习结构预测，可以继续阅读[晶体结构预测教程]({{ '/zh/tutorials/crystal-structure-prediction/' | relative_url }})。
 
 ## 文件格式在哪里说明？
 

@@ -32,10 +32,34 @@ After Conda installation, the environment includes
 
 ### Installation
 
-#### 1. Extract the released Conda channel
+#### 1. Download and verify the released Conda channel
+
+Download both files from the [Download page]({{ '/download/' | relative_url }}):
+
+```text
+acnn-csp-1.0.0-linux-64-conda-channel.tar.gz
+acnn-csp-1.0.0-linux-64-conda-channel.tar.gz.sha256
+```
+
+Place them in the same directory, then verify the archive.
 
 ```bash
-tar xzf acnn-conda-channel.tar.gz
+sha256sum -c \
+  acnn-csp-1.0.0-linux-64-conda-channel.tar.gz.sha256
+```
+
+Expected result:
+
+```text
+acnn-csp-1.0.0-linux-64-conda-channel.tar.gz: OK
+```
+
+---
+
+#### 2. Extract the released Conda channel
+
+```bash
+tar xzf acnn-csp-1.0.0-linux-64-conda-channel.tar.gz
 ```
 
 This creates the local Conda channel
@@ -50,18 +74,18 @@ conda-bld/
 
 ---
 
-#### 2. Create a new environment
+#### 3. Create a new environment
 
 ```bash
 conda create -n acnn \
     -c file://$PWD/conda-bld \
     -c conda-forge \
-    acnn-suite
+    acnn-suite=1.0.0
 ```
 
 ---
 
-#### 3. Activate the environment
+#### 4. Activate the environment
 
 ```bash
 conda activate acnn
@@ -71,7 +95,19 @@ conda activate acnn
 
 ### Verify Installation
 
-Verify that the major executables are available.
+Run the bundled check command first.
+
+```bash
+acnn-check
+```
+
+Expected result:
+
+```text
+ACNN-CSP check passed.
+```
+
+You can also verify that the major executables are available.
 
 ```bash
 which acnn

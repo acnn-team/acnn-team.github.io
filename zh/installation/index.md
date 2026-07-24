@@ -32,10 +32,34 @@ Conda 安装完成后，环境中包含：
 
 ### 安装
 
-#### 1. 解压发布的 Conda channel
+#### 1. 下载并校验发布的 Conda channel
+
+从[下载页面]({{ '/zh/download/' | relative_url }})下载这两个文件：
+
+```text
+acnn-csp-1.0.0-linux-64-conda-channel.tar.gz
+acnn-csp-1.0.0-linux-64-conda-channel.tar.gz.sha256
+```
+
+将它们放在同一目录后，先校验压缩包：
 
 ```bash
-tar xzf acnn-conda-channel.tar.gz
+sha256sum -c \
+  acnn-csp-1.0.0-linux-64-conda-channel.tar.gz.sha256
+```
+
+预期结果：
+
+```text
+acnn-csp-1.0.0-linux-64-conda-channel.tar.gz: OK
+```
+
+---
+
+#### 2. 解压发布的 Conda channel
+
+```bash
+tar xzf acnn-csp-1.0.0-linux-64-conda-channel.tar.gz
 ```
 
 该命令会生成本地 Conda channel：
@@ -50,18 +74,18 @@ conda-bld/
 
 ---
 
-#### 2. 创建新环境
+#### 3. 创建新环境
 
 ```bash
 conda create -n acnn \
     -c file://$PWD/conda-bld \
     -c conda-forge \
-    acnn-suite
+    acnn-suite=1.0.0
 ```
 
 ---
 
-#### 3. 激活环境
+#### 4. 激活环境
 
 ```bash
 conda activate acnn
@@ -71,7 +95,19 @@ conda activate acnn
 
 ### 验证安装
 
-确认主要可执行程序可以被找到：
+先运行随包提供的检查命令：
+
+```bash
+acnn-check
+```
+
+预期结果：
+
+```text
+ACNN-CSP check passed.
+```
+
+也可以进一步确认主要可执行程序可以被找到：
 
 ```bash
 which acnn

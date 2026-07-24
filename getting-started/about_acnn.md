@@ -33,7 +33,7 @@ ACNN is primarily written in C++ and based on LibTorch, the C++ distribution of 
 ## Documentation Map
 
 - **[Getting Started]({{ '/getting-started/installation/' | relative_url }})** introduces installation, examples, contributors, and this project overview.
-- **[Tutorials]({{ '/how-to-guides/high-pressure-binary-searches/' | relative_url }})** describe practical ACNN workflows.
+- **[Tutorials]({{ '/tutorials/crystal-structure-prediction/' | relative_url }})** describe practical ACNN workflows.
 - **[Technical Reference]({{ '/technical-reference/utilities/' | relative_url }})** records file formats, utilities, and external-program interfaces.
 - **[External]({{ '/external/external-utilities/' | relative_url }})** explains how ACNN connects with other scientific software.
 

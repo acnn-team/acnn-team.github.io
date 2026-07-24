@@ -33,7 +33,7 @@ cat *.res | acnn_estvol
 
 The minimum bond length defines the shortest allowed distance for each element pair, such as `A-A`, `A-B`, and `B-B`. In the ACNN workflow, these values are used as safety checks during structure relaxation. If atoms become unrealistically close, the structure can be flagged or stopped instead of being treated as a valid candidate.
 
-For example, the [crystal structure prediction tutorial]({{ '/how-to-guides/high-pressure-binary-searches/' | relative_url }}) defines pairwise limits through `min_bonds`, and applies a scaling factor through `bonds_scale`:
+For example, the [crystal structure prediction tutorial]({{ '/tutorials/crystal-structure-prediction/' | relative_url }}) defines pairwise limits through `min_bonds`, and applies a scaling factor through `bonds_scale`:
 
 ```bash
 min_bonds="Sr-Sr=2.075,Sr-B=1.671,B-B=1.267"

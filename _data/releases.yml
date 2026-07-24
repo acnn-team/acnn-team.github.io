@@ -1,0 +1,53 @@
+current:
+  product: "ACNN-CSP"
+  version: "1.0.0"
+  title: "ACNN-CSP 1.0.0"
+  date: "July 23, 2026"
+  status: "Released · Linux x86-64"
+  platform: "Linux x86-64"
+  minimum_glibc: "2.17"
+  size_bytes: "43,444,657"
+  size_mib: "41.4"
+  download_url: "/assets/downloads/acnn-csp-1.0.0-linux-64-conda-channel.tar.gz"
+  download_label: "Download ACNN-CSP 1.0.0"
+  checksum_url: "/assets/downloads/acnn-csp-1.0.0-linux-64-conda-channel.tar.gz.sha256"
+  checksum_label: "SHA256 checksum"
+  sha256: "9cadf95279e045ee5256bae0eaa8dd8a951aae1f49b5cd0013a365e336f6d083"
+  new_features:
+    - "First supported ACNN-CSP Conda distribution."
+    - "Includes acnn, acnn_relax, crystal-structure prediction utilities, and the ACNN workflow tool collection."
+    - "Adds an online CALYPSO + ACNN Slurm workflow with partition propagation, submit-directory queue state, progress tracking, and automatic replacement of failed workers."
+    - "Adds pressure-dependent crystal-volume estimation from composition and pressure."
+  new_features_zh:
+    - "第一个正式支持的 ACNN-CSP Conda 发行包。"
+    - "包含 acnn、acnn_relax、晶体结构预测工具和 ACNN 工作流工具集合。"
+    - "加入在线 CALYPSO + ACNN Slurm 工作流，支持分区传递、提交目录队列状态、进度追踪，以及失败 worker 的自动替换。"
+    - "加入根据组分和压强估算晶体体积的工具。"
+  bug_fixes:
+    - "Avoids UCX and InfiniBand initialization for local single-process ACNN relaxation tasks."
+    - "Uses shared-memory MPI transport for single-node DFT and local parallel workloads."
+  bug_fixes_zh:
+    - "本地单进程 ACNN 结构优化任务会避免 UCX 和 InfiniBand 初始化。"
+    - "单节点 DFT 和本地并行任务使用共享内存 MPI 传输。"
+  compatibility:
+    - "Linux x86-64."
+    - "glibc 2.17 or newer."
+    - "Conda or Miniforge."
+    - "CPU-only LibTorch package."
+  compatibility_zh:
+    - "Linux x86-64。"
+    - "glibc 2.17 或更新版本。"
+    - "Conda 或 Miniforge。"
+    - "CPU-only LibTorch 包。"
+  packages:
+    - "acnn 1.0.0"
+    - "acnn-workflow 1.0.0"
+    - "acnn-suite 1.0.0"
+    - "airss 0.9.4"
+  verification:
+    command: "acnn-check"
+    status: "passed"
+    source_commit: "3afe461a4b3f832c10149885c9c51ea5c9dfb9d1"
+    release_tag: "acnn-csp-v1.0.0"
+
+history: []

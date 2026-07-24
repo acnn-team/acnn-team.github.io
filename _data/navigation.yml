@@ -4,6 +4,8 @@ en:
       url: /
     - title: Research
       url: /research/
+    - title: Download
+      url: /download/
     - title: FAQ
       url: /faq/
     - title: Contact
@@ -33,7 +35,7 @@ en:
     - title: Tutorials
       children:
         - title: Crystal structure prediction
-          url: /how-to-guides/high-pressure-binary-searches/
+          url: /tutorials/crystal-structure-prediction/
 
     - title: External Links
       children:
@@ -48,6 +50,8 @@ zh:
       url: /zh/
     - title: 研究
       url: /zh/research/
+    - title: 下载
+      url: /zh/download/
     - title: FAQ
       url: /zh/faq/
     - title: 联系
@@ -73,7 +77,7 @@ zh:
     - title: Tutorials
       children:
         - title: Crystal structure prediction
-          url: /zh/how-to-guides/high-pressure-binary-searches/
+          url: /zh/tutorials/crystal-structure-prediction/
     - title: 外部链接
       children:
         - title: Ma Group
