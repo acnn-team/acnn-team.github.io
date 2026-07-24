@@ -23,13 +23,9 @@ The workflow scripts submit and monitor first-principles calculations through Sl
 
 In the ACNN crystal-structure-prediction workflow, atomic volume and minimum bond length are input parameters used during candidate structure generation and relaxation. They help keep the generated and relaxed structures physically reasonable before the next round of first-principles labeling.
 
-The atomic volume provides an initial estimate of the cell size for generated candidate structures. It should be chosen according to the target composition, pressure, and expected density. A practical starting point is to estimate it from known structures, previous calculations, experimental volumes, or a short set of trial first-principles relaxations under similar conditions.
+The atomic volume provides an initial estimate of the cell size for generated candidate structures. In the current ACNN-CSP workflow, this part is handled automatically during deployment and online structure generation: the workflow estimates pressure-dependent crystal volumes from the composition and target pressure, then writes the corresponding settings into the generated structure-generation inputs.
 
-If you already have many structures for related materials at known pressures, ACNN also provides a helper script, `acnn_estvol`, to estimate atomic volumes by a simple least-squares fit. The structures are read from standard input:
-
-```bash
-cat *.res | acnn_estvol
-```
+In most new searches, you do not need to estimate atomic volumes manually. Instead, check that the target pressure, composition list, and element symbols are correct before running the online workflow. Manual volume editing is mainly useful for advanced troubleshooting or for unusual systems where you already know that the automatic estimate is inappropriate.
 
 The minimum bond length defines the shortest allowed distance for each element pair, such as `A-A`, `A-B`, and `B-B`. In the ACNN workflow, these values are used as safety checks during structure relaxation. If atoms become unrealistically close, the structure can be flagged or stopped instead of being treated as a valid candidate.
 
