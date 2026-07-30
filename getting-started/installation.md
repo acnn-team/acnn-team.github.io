@@ -37,21 +37,21 @@ After Conda installation, the environment includes
 Download both files from the [Download page]({{ '/download/' | relative_url }}):
 
 ```text
-acnn-csp-1.0.0-linux-64-conda-channel.tar.gz
-acnn-csp-1.0.0-linux-64-conda-channel.tar.gz.sha256
+acnn-csp-1.0.1-linux-64-conda-channel.tar.gz
+acnn-csp-1.0.1-linux-64-conda-channel.tar.gz.sha256
 ```
 
 Place them in the same directory, then verify the archive.
 
 ```bash
 sha256sum -c \
-  acnn-csp-1.0.0-linux-64-conda-channel.tar.gz.sha256
+  acnn-csp-1.0.1-linux-64-conda-channel.tar.gz.sha256
 ```
 
 Expected result:
 
 ```text
-acnn-csp-1.0.0-linux-64-conda-channel.tar.gz: OK
+acnn-csp-1.0.1-linux-64-conda-channel.tar.gz: OK
 ```
 
 ---
@@ -59,7 +59,7 @@ acnn-csp-1.0.0-linux-64-conda-channel.tar.gz: OK
 #### 2. Extract the released Conda channel
 
 ```bash
-tar xzf acnn-csp-1.0.0-linux-64-conda-channel.tar.gz
+tar xzf acnn-csp-1.0.1-linux-64-conda-channel.tar.gz
 ```
 
 This creates the local Conda channel
@@ -80,7 +80,7 @@ conda-bld/
 conda create -n acnn \
     -c file://$PWD/conda-bld \
     -c conda-forge \
-    acnn-suite=1.0.0
+    acnn-suite=1.0.1
 ```
 
 ---
@@ -165,15 +165,19 @@ No manual installation is required.
 
 ---
 
-### Updating
+### Updating from ACNN-CSP 1.0.0
 
-If a newer Conda channel is provided, update the installed packages with
+After extracting the 1.0.1 channel archive, update the existing environment with
 
 ```bash
-conda update \
+conda activate acnn
+
+conda install \
     -c file://$PWD/conda-bld \
     -c conda-forge \
-    acnn-suite
+    acnn-suite=1.0.1
+
+acnn-check
 ```
 
 ---

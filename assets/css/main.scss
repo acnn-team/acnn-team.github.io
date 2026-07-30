@@ -433,6 +433,12 @@ figure.highlight {
   font-size: 0.95rem;
 }
 
+.release-history-item h4 {
+  margin: 0.85rem 0 0.35rem;
+  color: #1f2933;
+  font-size: 0.82rem;
+}
+
 .release-notes-grid ul,
 .release-history-item ul {
   margin-bottom: 0;
@@ -449,6 +455,18 @@ figure.highlight {
 
 .release-history-item:last-child {
   border-bottom: 1px solid #d8dee4;
+}
+
+.release-history-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+
+.release-history-links a {
+  color: $acnn-blue;
 }
 
 @media (max-width: 760px) {

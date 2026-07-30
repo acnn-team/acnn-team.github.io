@@ -40,14 +40,17 @@ permalink: /download/
         {% endfor %}
       </ul>
     </section>
+    {% if current.bug_fixes %}
     <section>
-      <h3>Bug Fixes</h3>
+      <h3>Bug Fixes / Changes</h3>
       <ul>
         {% for item in current.bug_fixes %}
           <li>{{ item }}</li>
         {% endfor %}
       </ul>
     </section>
+    {% endif %}
+    {% if current.compatibility %}
     <section>
       <h3>Compatibility</h3>
       <ul>
@@ -56,6 +59,7 @@ permalink: /download/
         {% endfor %}
       </ul>
     </section>
+    {% endif %}
   </div>
 </section>
 
@@ -75,11 +79,38 @@ permalink: /download/
       </div>
       <div>
         <p class="release-status">{{ release.status }}</p>
+        {% if release.notes %}
+          <h4>New Features</h4>
+        {% endif %}
         <ul>
           {% for note in release.notes %}
             <li>{{ note }}</li>
           {% endfor %}
         </ul>
+        {% if release.bug_fixes %}
+          <h4>Bug Fixes</h4>
+          <ul>
+            {% for note in release.bug_fixes %}
+              <li>{{ note }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if release.compatibility %}
+          <h4>Compatibility</h4>
+          <ul>
+            {% for note in release.compatibility %}
+              <li>{{ note }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        <div class="release-history-links">
+          {% if release.download_url %}
+            <a href="{{ release.download_url | relative_url }}">Download</a>
+          {% endif %}
+          {% if release.checksum_url %}
+            <a href="{{ release.checksum_url | relative_url }}">SHA256 checksum</a>
+          {% endif %}
+        </div>
       </div>
     </article>
   {% endfor %}

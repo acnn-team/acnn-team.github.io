@@ -40,14 +40,17 @@ permalink: /zh/download/
         {% endfor %}
       </ul>
     </section>
+    {% if current.bug_fixes_zh %}
     <section>
-      <h3>问题修复</h3>
+      <h3>问题修复 / 变化</h3>
       <ul>
         {% for item in current.bug_fixes_zh %}
           <li>{{ item }}</li>
         {% endfor %}
       </ul>
     </section>
+    {% endif %}
+    {% if current.compatibility_zh %}
     <section>
       <h3>兼容性</h3>
       <ul>
@@ -56,6 +59,7 @@ permalink: /zh/download/
         {% endfor %}
       </ul>
     </section>
+    {% endif %}
   </div>
 </section>
 
@@ -75,11 +79,38 @@ permalink: /zh/download/
       </div>
       <div>
         <p class="release-status">{{ release.status }}</p>
+        {% if release.notes_zh %}
+          <h4>新功能</h4>
+        {% endif %}
         <ul>
           {% for note in release.notes_zh %}
             <li>{{ note }}</li>
           {% endfor %}
         </ul>
+        {% if release.bug_fixes_zh %}
+          <h4>问题修复</h4>
+          <ul>
+            {% for note in release.bug_fixes_zh %}
+              <li>{{ note }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if release.compatibility_zh %}
+          <h4>兼容性</h4>
+          <ul>
+            {% for note in release.compatibility_zh %}
+              <li>{{ note }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        <div class="release-history-links">
+          {% if release.download_url %}
+            <a href="{{ release.download_url | relative_url }}">下载</a>
+          {% endif %}
+          {% if release.checksum_url %}
+            <a href="{{ release.checksum_url | relative_url }}">SHA256 校验文件</a>
+          {% endif %}
+        </div>
       </div>
     </article>
   {% endfor %}

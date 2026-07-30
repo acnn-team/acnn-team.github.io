@@ -37,21 +37,21 @@ Conda 安装完成后，环境中包含：
 从[下载页面]({{ '/zh/download/' | relative_url }})下载这两个文件：
 
 ```text
-acnn-csp-1.0.0-linux-64-conda-channel.tar.gz
-acnn-csp-1.0.0-linux-64-conda-channel.tar.gz.sha256
+acnn-csp-1.0.1-linux-64-conda-channel.tar.gz
+acnn-csp-1.0.1-linux-64-conda-channel.tar.gz.sha256
 ```
 
 将它们放在同一目录后，先校验压缩包：
 
 ```bash
 sha256sum -c \
-  acnn-csp-1.0.0-linux-64-conda-channel.tar.gz.sha256
+  acnn-csp-1.0.1-linux-64-conda-channel.tar.gz.sha256
 ```
 
 预期结果：
 
 ```text
-acnn-csp-1.0.0-linux-64-conda-channel.tar.gz: OK
+acnn-csp-1.0.1-linux-64-conda-channel.tar.gz: OK
 ```
 
 ---
@@ -59,7 +59,7 @@ acnn-csp-1.0.0-linux-64-conda-channel.tar.gz: OK
 #### 2. 解压发布的 Conda channel
 
 ```bash
-tar xzf acnn-csp-1.0.0-linux-64-conda-channel.tar.gz
+tar xzf acnn-csp-1.0.1-linux-64-conda-channel.tar.gz
 ```
 
 该命令会生成本地 Conda channel：
@@ -80,7 +80,7 @@ conda-bld/
 conda create -n acnn \
     -c file://$PWD/conda-bld \
     -c conda-forge \
-    acnn-suite=1.0.0
+    acnn-suite=1.0.1
 ```
 
 ---
@@ -165,15 +165,19 @@ acnn_deploy
 
 ---
 
-### 更新
+### 从 ACNN-CSP 1.0.0 更新
 
-如果提供了更新的 Conda channel，可以使用：
+解压 1.0.1 channel 压缩包后，可以用下面的命令更新已有环境：
 
 ```bash
-conda update \
+conda activate acnn
+
+conda install \
     -c file://$PWD/conda-bld \
     -c conda-forge \
-    acnn-suite
+    acnn-suite=1.0.1
+
+acnn-check
 ```
 
 ---
