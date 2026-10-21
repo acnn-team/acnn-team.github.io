@@ -63,4 +63,28 @@ In short, `comp.txt` controls which compositions are explored. For a broad phase
 
 </details>
 
+<details class="faq-item" markdown="1">
+<summary>How can I assess convergence in an ACNN crystal structure search?</summary>
+
+**Stability as the search population increases**
+
+In online mode, gradually increase the number of structures requested for each composition in `RSS/comp.txt` and continue the active-learning iterations. If the expanded search repeatedly finds the same low-enthalpy structures, and DFT validation of new candidates neither lowers the minimum enthalpy nor changes the convex hull, this provides evidence that the search is approaching convergence.
+
+**Using `LIM` as a supporting indicator**
+
+`RELAX/IT*/LIM` contains structures that trigger the bond-length or pressure safety limits. If their fraction of the structures actually sampled remains low and stable as the search population increases, this can support an assessment that the search is becoming more stable. However, a small number of `LIM` structures alone does not establish convergence. Changes in safety-check parameters, including `bonds_scale`, should also be considered when comparing iterations.
+
+</details>
+
+<details class="faq-item" markdown="1">
+<summary>Why do different compositions have uneven numbers of structures in XSF or PD, and how can I increase sampling for specific compositions?</summary>
+
+The main reason is the composition-selection strategy. ACNN ranks compositions by enthalpy relative to the convex hull and samples only the `Cmax` compositions with the lowest values, selecting up to `N` structures from each. Higher-enthalpy compositions outside this selection are not sampled in that iteration. Over successive iterations, this can produce uneven numbers of structures across compositions. Differences in calculation success, data cleaning, and subsequent filtering can further contribute to the imbalance.
+
+You can adjust `Cmax` to broaden the composition coverage and `N` to change the number of structures selected per composition. If `Cmax` exceeds the total number of available compositions, all compositions are selected, with up to `N` structures each. This gives uniform sampling across compositions, provided each has enough eligible candidates; the final numbers in XSF or PD may still differ after calculations and filtering.
+
+The default strategy does not impose a preference for specific compositions, since the desired emphasis varies between research tasks. To favor particular compositions, increase their representation in the candidate structure pool in offline mode, or increase their requested structure counts in `RSS/comp.txt` in online mode. This increases their exploration opportunities, but does not bypass the convex-hull-based selection.
+
+</details>
+
 </div>
