@@ -25,9 +25,9 @@ permalink: /zh/download/
     <p class="download-kicker">当前版本</p>
     <h2>{{ current.version }}</h2>
     {% if current.date %}
-      <p class="release-date">{{ current.date }}</p>
+      <p class="release-date">{{ current.date_zh | default: current.date }}</p>
     {% endif %}
-    <p class="release-status">{{ current.status }}</p>
+    <p class="release-status">{{ current.status_zh | default: current.status }}</p>
     <p class="release-status">压缩包大小：{{ current.size_bytes }} bytes ({{ current.size_mib }} MiB)</p>
   </div>
 
@@ -74,11 +74,11 @@ permalink: /zh/download/
       <div>
         <h3>{{ release.version }}</h3>
         {% if release.date %}
-          <p class="release-date">{{ release.date }}</p>
+          <p class="release-date">{{ release.date_zh | default: release.date }}</p>
         {% endif %}
       </div>
       <div>
-        <p class="release-status">{{ release.status }}</p>
+        <p class="release-status">{{ release.status_zh | default: release.status }}</p>
         {% if release.notes_zh %}
           <h4>新功能</h4>
         {% endif %}

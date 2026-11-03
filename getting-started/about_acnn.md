@@ -27,7 +27,7 @@ ACNN is primarily written in C++ and based on LibTorch, the C++ distribution of 
 
 - ARES and ARES-PHONON for real-space first-principles calculations and phonon workflows.
 - LAMMPS for molecular dynamics and large-scale atomistic simulations.
-- CALYPSO and AIRSS for crystal structure generation and structure-search workflows.
+- CALYPSO (recommended), PyXtal, and AIRSS for crystal structure generation and structure-search workflows.
 - Python-based scripts for data processing, workflow control, and analysis.
 
 ## Documentation Map

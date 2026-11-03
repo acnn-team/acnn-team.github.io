@@ -32,6 +32,8 @@ Required options:
 
 All five options are required and each option must appear only once. `acnn_deploy` writes the selected pressure, backend, partition, and bond limits into the generated DFT, phase-diagram, training, and relaxation scripts.
 
+The optional `-g, --generator` selects the structure generator: `calypso` is the recommended default, and `pyxtal` is also available. Run `acnn_xtalgen --help` for standalone PyXtal generation usage.
+
 ### `acnn_wait`
 
 Wait until all Slurm jobs with a given job name have disappeared from the current user's queue.

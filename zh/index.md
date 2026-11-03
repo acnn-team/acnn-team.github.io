@@ -26,7 +26,7 @@ ACNN 主要使用 C++ 编写，并基于 LibTorch（PyTorch 的 C++ 发行版）
 
 - ARES 和 ARES-PHONON：用于实空间第一性原理计算和声子计算工作流。
 - LAMMPS：用于分子动力学和大规模原子模拟。
-- CALYPSO 和 AIRSS：用于晶体结构生成和结构搜索工作流。
+- CALYPSO（推荐）、PyXtal 和 AIRSS：用于晶体结构生成和结构搜索工作流。
 - Python 脚本：用于数据处理、工作流控制和结果分析。
 
 ## 文档导航

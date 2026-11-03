@@ -32,6 +32,8 @@ $ acnn_deploy -p 40 -s SrB -b Sr-Sr=2.075,Sr-B=1.671,B-B=1.267 -n amd9654 -e vas
 
 五个参数都必须提供，并且每个参数只能出现一次。`acnn_deploy` 会把压强、后端、分区和键长限制写入生成的 DFT、相图、训练和优化脚本。
 
+可选参数 `-g, --generator` 用于选择结构生成器：默认且推荐使用 `calypso`，也可设置为 `pyxtal`。`acnn_xtalgen --help` 可查看独立 PyXtal 结构生成命令的用法。
+
 ### `acnn_wait`
 
 等待当前用户队列中指定作业名的 Slurm 作业全部结束。

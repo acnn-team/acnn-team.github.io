@@ -15,7 +15,7 @@ workflow can be adapted to binary and multi-component systems.
 The workflow supports two structure-generation modes:
 
 1. **Online mode (recommended):** provide a composition list in
-   `RSS/comp.txt`. CALYPSO generates structures while ACNN relaxations are
+   `RSS/comp.txt`. The selected generator (CALYPSO recommended) generates structures while ACNN relaxations are
    distributed through Slurm.
 2. **Offline mode:** generate structures in advance and place the `.res` files
    in `RSS/Base`.
@@ -24,7 +24,7 @@ Both modes use the same DFT, training, phase-diagram, and active-learning
 stages. Online mode requires no user-prepared structures; it starts directly
 from `RSS/comp.txt`.
 
-> **Note:** ACNN-CSP, CALYPSO, a supported DFT backend, and the required
+> **Note:** ACNN-CSP, the selected structure generator, a supported DFT backend, and the required
 > scheduler commands must be available before starting. See the installation
 > documentation for details.
 
@@ -56,6 +56,8 @@ All five options are required:
 - `-n` specifies the Slurm partition.
 - `-e` selects the first-principles backend: `vasp` or `ares`.
 
+CALYPSO is the recommended default structure generator. To use PyXtal instead, add `-g pyxtal` (or `--generator pyxtal`) to the deployment command; the bundled `acnn_xtalgen` supplies structures for initialization and online relaxation.
+
 After deployment, the working directory contains:
 
 ```console
@@ -77,7 +79,7 @@ Directory roles:
 | `XSF/` | Converts finished DFT output into [`.xsf`]({{ '/technical-reference/xsf-file/' | relative_url }}) training data. |
 | `PD/` | Builds convex-hull and phase-diagram files. |
 | `POT/` | Generates ACNN training input and submits training jobs. |
-| `RELAX/` | Optimizes candidate structures in both modes: batch optimization in offline mode and CALYPSO + ACNN optimization in online mode. |
+| `RELAX/` | Optimizes candidate structures in both modes: batch optimization in offline mode and generation + ACNN optimization in online mode. |
 | `SEED/` | Stores known endpoint and reference structures for phase diagrams. |
 
 The iterative loop is:
@@ -176,12 +178,12 @@ directory.
 Online Mode (Recommended)
 -------------------------
 
-Online mode generates CALYPSO structures and relaxes them with the current
+Online mode generates structures with the selected generator and relaxes them with the current
 ACNN model without first building a large static structure collection.
 Compositions are dispatched through a shared Slurm queue, allowing several
 worker jobs and several single-core ACNN relaxations per worker.
 
-> **Requirement:** Online mode requires `calypso.x` to be available in
+> **Recommended:** With the default CALYPSO generator, `calypso.x` must be available in
 > `PATH`. Check it before starting:
 >
 > ```console
@@ -318,7 +320,7 @@ At iteration 0, `auto-online` performs the following sequence:
 2. Submit first-principles calculations.
 3. Build the phase diagram and training data.
 4. Train the ACNN model.
-5. Submit online CALYPSO + ACNN relaxation workers.
+5. Submit online generation + ACNN relaxation workers.
 6. Select structures for the next DFT iteration.
 
 Later iterations reuse the structures selected by the preceding online stage.
@@ -566,9 +568,9 @@ $ ./init_online ../RSS/comp.txt
 1. reads the unique formulas from `RSS/comp.txt`;
 2. shuffles the formula order;
 3. distributes `total_structures` among those formulas;
-4. writes a CALYPSO `input.dat`;
-5. runs `calypso.x`; and
-6. converts `POSCAR_*` into `.res` files in `RSS/Base`.
+4. runs the selected generator (CALYPSO by default, or PyXtal);
+5. exports `.res` files into `RSS/Base`; and
+6. validates the allocated structure counts and files before continuing to DFT.
 
 Its run-specific files are retained under:
 
@@ -829,7 +831,7 @@ repeatedly:
 
 1. locks the shared queue;
 2. claims the next unassigned batch;
-3. runs CALYPSO for that formula and batch;
+3. runs the selected generator for that formula and batch;
 4. converts the generated structures;
 5. relaxes them with the newest ACNN model;
 6. checks bond and pressure limits; and
@@ -1008,7 +1010,7 @@ system:
 | --- | --- |
 | System tag | `auto-online`, `auto`, generated Slurm job names |
 | Element list | `POT/tr`, relaxation commands, structure generators |
-| Minimum bond distances | `in.seed`, online CALYPSO input, relaxation safety checks |
+| Minimum bond distances | `in.seed`, the selected online generator, relaxation safety checks |
 | Pressure | `DFT/dyn_*_in`, `PD/mkpd`, ACNN relaxation commands |
 | Pseudopotentials | `DFT/POTCAR-*` or `DFT/*.upf` |
 | Slurm resources | `DFT/sub-*.sh`, `POT/sub.sh`, offline and online relaxation scripts |
@@ -1031,7 +1033,7 @@ Check:
 ```console
 $ command -v calypso.x
 $ cat RSS/comp.txt
-$ find DFT/INIT -name calypso.log -print
+$ find DFT/INIT \( -name calypso.log -o -name pyxtal.log \) -print
 $ find RSS/Base -name '*.res' | wc -l
 ```
 
